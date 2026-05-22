@@ -1,0 +1,450 @@
+import { products, altNames, modules, type Product } from "@/lib/nexus-data";
+
+const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
+
+function SlideFooter({ children = FOOTER }: { children?: React.ReactNode }) {
+  return (
+    <div className="absolute left-[60px] bottom-[80px] font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--silver-dark)]">
+      {children}
+    </div>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <div className="eyebrow">{children}</div>;
+}
+
+/* ==================== SLIDE 01 — CAPA ==================== */
+function Slide01() {
+  const stats = [
+    { value: "10", label: "PRODUTOS DIGITAIS" },
+    { value: "5", label: "MÓDULOS ESTRATÉGICOS" },
+    { value: "R$ 3,3M+", label: "ECONOMIA ANUAL EST.", green: true },
+    { value: "100%", label: "PROPRIEDADE INTELECTUAL" },
+  ];
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] overflow-hidden">
+      {/* ghost text */}
+      <div
+        aria-hidden
+        className="absolute right-[-40px] top-1/2 -translate-y-1/2 font-display font-extralight select-none pointer-events-none"
+        style={{
+          fontSize: "280px",
+          transform: "translateY(-50%) rotate(90deg)",
+          transformOrigin: "center",
+          color: "transparent",
+          WebkitTextStroke: "1px rgba(157,202,121,0.05)",
+          letterSpacing: "-0.04em",
+          lineHeight: 1,
+        }}
+      >
+        NEXUS
+      </div>
+
+      <div className="slide-content active relative h-full px-[80px] flex flex-col justify-center max-w-[1100px]">
+        <div className="w-[2px] h-[60px] bg-[var(--green)] mb-8" />
+        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--green)] mb-10">
+          SISTEMA OPERACIONAL DA CULTURA · 5 MÓDULOS · 10 PRODUTOS
+        </div>
+        <h1
+          className="font-display font-extralight text-[var(--white-warm)] leading-none"
+          style={{ fontSize: "clamp(80px, 9vw, 120px)", letterSpacing: "-0.04em" }}
+        >
+          NEXUS
+        </h1>
+        <div
+          className="font-display font-extralight mt-6"
+          style={{ fontSize: "clamp(28px, 3vw, 40px)", color: "var(--green)", letterSpacing: "-0.02em" }}
+        >
+          Não é um sistema de RH.
+        </div>
+
+        <div className="mt-16 pt-10 border-t border-[var(--graphite)] grid grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <div
+                className="font-display font-extralight leading-none"
+                style={{ fontSize: "48px", color: s.green ? "var(--green)" : "var(--white-warm)" }}
+              >
+                {s.value}
+              </div>
+              <div className="mt-4 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--silver-dark)] leading-relaxed">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <SlideFooter />
+    </div>
+  );
+}
+
+/* ==================== SLIDE 02 — TESE ==================== */
+function Slide02() {
+  const blocks = [
+    { n: "01", k: "PROBLEMA", t: "Cultura sem arquitetura se dissipa", b: "Toda empresa de alto padrão declara valores. Poucas os materializam em sistemas vivos. Sem infraestrutura digital própria, cultura vira discurso de corredor — bonita no onboarding, invisível no dia a dia." },
+    { n: "02", k: "SOLUÇÃO", t: "Produto como linguagem cultural", b: "O Nexus converte o \u201CNosso Jeito de Ser\u201D em 10 produtos digitais operáveis. Cada ferramenta é simultaneamente funcional e simbólica — comunica quem somos enquanto resolve um problema real." },
+    { n: "03", k: "VANTAGEM", t: "Propriedade que não se terceiriza", b: "Enquanto concorrentes pagam mensalidades a SAPs, Salesforces e Workdays, a Hyndra/Newe detém a propriedade intelectual de toda sua stack cultural. Customização total, custo marginal." },
+    { n: "04", k: "ESCALA", t: "Do grupo para o setor", b: "Nenhuma incorporadora de alto padrão no Brasil opera com esta densidade de produto cultural próprio. O Nexus posiciona o grupo como referência de gestão humanista no real estate premium." },
+  ];
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex">
+      <div className="slide-content active w-full grid grid-cols-[40%_60%] gap-16 items-center">
+        <div>
+          <Eyebrow>A TESE ESTRATÉGICA</Eyebrow>
+          <h2
+            className="mt-8 font-display font-extralight text-[var(--white-warm)]"
+            style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+          >
+            Por que o<br />Nexus existe.
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          {blocks.map((b) => (
+            <div key={b.n} className="bg-[var(--graphite-deep)] border-l-2 border-[var(--green)] p-7">
+              <div className="font-mono text-[9px] text-[var(--green)] tracking-[0.2em] uppercase">
+                {b.n} · {b.k}
+              </div>
+              <div className="mt-3 font-display font-extralight text-[18px] text-[var(--white-warm)] leading-snug">
+                {b.t}
+              </div>
+              <p className="mt-4 text-[13px] text-[var(--silver)] leading-[1.6] font-light">{b.b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <SlideFooter />
+    </div>
+  );
+}
+
+/* ==================== SLIDE 03 — ARQUITETURA ==================== */
+function Slide03() {
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex flex-col">
+      <div className="slide-content active flex-1 flex flex-col">
+        <Eyebrow>ARQUITETURA DO SISTEMA</Eyebrow>
+        <h2
+          className="mt-6 font-display font-extralight text-[var(--white-warm)]"
+          style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+        >
+          5 módulos. 10 produtos.
+        </h2>
+
+        <div className="mt-16 grid grid-cols-5 gap-0 border-t border-[var(--graphite)]">
+          {modules.map((m) => (
+            <div
+              key={m.n}
+              className="group border-r last:border-r-0 border-[var(--graphite)] p-7 h-[300px] flex flex-col justify-between relative hover:bg-[var(--graphite-deep)] transition-colors"
+            >
+              <div>
+                <div className="font-mono text-[9px] text-[var(--green)] tracking-[0.2em] uppercase">
+                  Módulo {m.n}
+                </div>
+                <div className="mt-6 font-display font-extralight text-[28px] text-[var(--white-warm)] leading-tight">
+                  {m.name}
+                </div>
+              </div>
+              <div className="font-mono text-[9px] text-[var(--silver-dark)] leading-relaxed">{m.desc}</div>
+              <div
+                className="absolute left-0 right-0 bottom-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ background: "linear-gradient(90deg, #9DCA79, transparent)" }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <SlideFooter />
+    </div>
+  );
+}
+
+/* ==================== SLIDES 04-13 — PRODUTOS ==================== */
+const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
+
+function ProductSlide({ p, idx }: { p: Product; idx: number }) {
+  const pct = (p.savingsValue / MAX_SAVING) * 100;
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[60px] flex flex-col">
+      <div className="slide-content active flex-1 flex flex-col gap-8">
+        <Eyebrow>
+          MÓDULO {p.moduleN} · {p.module.toUpperCase()} · PRODUTO {String(idx + 1).padStart(2, "0")}/10
+        </Eyebrow>
+
+        <div className="grid grid-cols-[40%_60%] gap-12 flex-1 min-h-0">
+          {/* LEFT */}
+          <div className="flex flex-col justify-between">
+            <div>
+              <h2
+                className="font-display font-extralight text-[var(--white-warm)] leading-[1.02]"
+                style={{ fontSize: "clamp(36px, 4vw, 56px)", letterSpacing: "-0.03em" }}
+              >
+                {p.name}
+              </h2>
+              <div className="mt-5 font-mono text-[10px] text-[var(--green)] uppercase tracking-[0.2em]">
+                ALT: {p.alt}
+              </div>
+            </div>
+
+            <div
+              className="p-6 mt-8"
+              style={{
+                background: "rgba(157,202,121,0.06)",
+                border: "1px solid rgba(157,202,121,0.2)",
+              }}
+            >
+              <div className="font-mono text-[8px] text-[var(--green)] uppercase tracking-[0.2em]">
+                TENSÃO CULTURAL
+              </div>
+              <p className="mt-3 font-serif italic text-[18px] text-[var(--white-warm)] leading-[1.4]">
+                {p.tension}
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex flex-col gap-6">
+            <div className="bg-[var(--graphite-deep)] p-7 flex-1">
+              {[
+                { l: "CONCEITO", v: p.concept },
+                { l: "OBJETIVO", v: p.objective },
+                { l: "JUSTIFICATIVA", v: p.rationale },
+              ].map((f, i, arr) => (
+                <div
+                  key={f.l}
+                  className={`py-4 ${i < arr.length - 1 ? "border-b border-[var(--graphite)]" : ""} ${i === 0 ? "pt-0" : ""}`}
+                >
+                  <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
+                    {f.l}
+                  </div>
+                  <p className="mt-2 text-[13px] text-[var(--silver)] leading-[1.6] font-light">{f.v}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-[var(--graphite-deep)] p-6">
+              <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
+                EQUIVALENTE DE MERCADO
+              </div>
+              <div className="mt-2 font-display text-[14px] text-[var(--white-warm)]">{p.market}</div>
+              <div className="mt-5 grid grid-cols-3 gap-4">
+                {[
+                  { l: "IMPLANT.", v: p.implant },
+                  { l: "MENSAL.", v: p.monthly },
+                  { l: "NEXUS", v: p.nexus },
+                ].map((c) => (
+                  <div key={c.l}>
+                    <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
+                      {c.l}
+                    </div>
+                    <div className="mt-1 font-mono text-[11px] text-[var(--white-warm)]">{c.v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom savings bar */}
+        <div className="bg-[var(--graphite-deep)] -mx-[80px] px-[80px] py-5 flex items-center gap-8">
+          <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.2em] whitespace-nowrap">
+            ECONOMIA ESTIMADA · 2 ANOS VS. MERCADO
+          </div>
+          <div className="flex-1 h-[3px] bg-[var(--graphite)] relative overflow-hidden">
+            <div
+              className="absolute inset-y-0 left-0 bg-[var(--green)]"
+              style={{ width: `${pct}%`, transition: "width 600ms ease" }}
+            />
+          </div>
+          <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
+            {p.savings}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== SLIDE 14 — FINANCEIRO ==================== */
+function Slide14() {
+  const totalImplant = "R$ 1,0M";
+  const totalMonthly2y = "R$ 2,1M";
+  const totalSavings = "R$ 3,3M+";
+
+  const sum2y = (impl: string, monthly: string) => {
+    const i = parseFloat(impl.replace(/[^\d,]/g, "").replace(",", "."));
+    const m = parseFloat(monthly.replace(/[^\d,]/g, "").replace(",", "."));
+    return `R$ ${(i + m * 24).toFixed(0)}k`;
+  };
+
+  return (
+    <div className="relative w-full h-full bg-[var(--graphite-deep)] px-[80px] py-[60px] flex flex-col overflow-hidden">
+      <div className="slide-content active flex-1 flex flex-col min-h-0">
+        <Eyebrow>ANÁLISE FINANCEIRA</Eyebrow>
+        <h2
+          className="mt-5 font-display font-extralight text-[var(--white-warm)]"
+          style={{ fontSize: "clamp(34px, 3.5vw, 48px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+        >
+          O que o Nexus economiza ao grupo.
+        </h2>
+
+        <div className="mt-8 grid grid-cols-3 gap-5">
+          {[
+            { l: "CUSTO DE MERCADO · 10 PRODUTOS · ANO 1", v: totalImplant, sub: "Implantação + licenças + manutenção" },
+            { l: "CUSTO RECORRENTE DE MERCADO · ANO 2+", v: totalMonthly2y, sub: "Apenas licenças + manutenção anual" },
+          ].map((b) => (
+            <div key={b.l} className="bg-[var(--black)] border border-[var(--graphite)] p-6">
+              <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">{b.l}</div>
+              <div className="mt-4 font-display font-extralight text-[44px] text-[var(--white-warm)] leading-none">
+                {b.v}
+              </div>
+              <div className="mt-3 font-mono text-[9px] text-[var(--silver-dark)]">{b.sub}</div>
+            </div>
+          ))}
+          <div
+            className="p-6"
+            style={{
+              border: "1px solid var(--green)",
+              background: "rgba(157,202,121,0.06)",
+            }}
+          >
+            <div className="font-mono text-[8px] text-[var(--green)] uppercase tracking-[0.18em]">
+              ECONOMIA ESTIMADA · PRIMEIRO CICLO (2 ANOS)
+            </div>
+            <div
+              className="mt-4 font-display font-extralight leading-none"
+              style={{ fontSize: "52px", color: "var(--green)" }}
+            >
+              {totalSavings}
+            </div>
+            <div className="mt-3 font-mono text-[9px] text-[var(--silver)]">
+              Vs. aquisição de plataformas equivalentes
+            </div>
+          </div>
+        </div>
+
+        {/* Table */}
+        <div className="mt-7 flex-1 min-h-0 overflow-auto no-scrollbar bg-[var(--black)] border border-[var(--graphite)]">
+          <table className="w-full font-mono text-[10px] text-[var(--silver)]">
+            <thead className="text-[var(--silver-dark)] uppercase tracking-[0.15em]">
+              <tr className="border-b border-[var(--graphite)]">
+                {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS", "ECONOMIA"].map((h) => (
+                  <th key={h} className="text-left px-4 py-3 text-[8px] font-normal">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((p) => (
+                <tr
+                  key={p.n}
+                  className="border-b border-[var(--graphite)] hover:bg-[rgba(157,202,121,0.02)] transition-colors"
+                >
+                  <td className="px-4 py-2.5 text-[var(--white-warm)]">{p.name}</td>
+                  <td className="px-4 py-2.5">{p.market}</td>
+                  <td className="px-4 py-2.5">{p.implant}</td>
+                  <td className="px-4 py-2.5">{p.monthly}</td>
+                  <td className="px-4 py-2.5">{sum2y(p.implant, p.monthly)}</td>
+                  <td className="px-4 py-2.5">{p.nexus}</td>
+                  <td className="px-4 py-2.5 font-bold text-[11px] text-[var(--green)]">{p.savings}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot style={{ borderTop: "1px solid var(--green)" }}>
+              <tr>
+                <td colSpan={6} className="px-4 py-3 text-right uppercase tracking-[0.15em] text-[var(--silver-dark)] text-[9px]">
+                  TOTAL ECONOMIA
+                </td>
+                <td className="px-4 py-3 font-bold text-[16px] text-[var(--green)]">{totalSavings}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div className="mt-3 font-mono text-[7px] text-[var(--silver-dark)] leading-relaxed">
+          * Valores calculados para 2 anos. Custo Nexus estimado via Lovable + manutenção incremental. Referências públicas 2024–2026.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== SLIDE 15 — NOMES ALT ==================== */
+function Slide15() {
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[60px] flex flex-col overflow-hidden">
+      <div className="slide-content active flex-1 flex flex-col min-h-0">
+        <Eyebrow>NOMES ALTERNATIVOS · PROVOCAÇÃO ESTRATÉGICA</Eyebrow>
+        <h2
+          className="mt-5 font-display font-extralight text-[var(--white-warm)]"
+          style={{ fontSize: "clamp(34px, 3.5vw, 48px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+        >
+          Nomes que incomodam bem.
+        </h2>
+        <p className="mt-5 font-serif italic text-[18px] text-[var(--silver)] max-w-[700px] leading-[1.5]">
+          “Um nome estratégico não é apenas bonito — é uma declaração de intenção. As opções abaixo provocam se os nomes atuais comunicam o que cada produto faz.”
+        </p>
+
+        <div className="mt-7 grid grid-cols-5 grid-rows-2 gap-4 flex-1 min-h-0">
+          {altNames.map((a) => (
+            <div key={a.current} className="bg-[var(--graphite-deep)] border border-[var(--graphite)] p-4 flex flex-col">
+              <div className="font-display font-light text-[13px] text-[var(--white-warm)] pb-2 border-b border-[var(--graphite)] leading-tight">
+                {a.current}
+              </div>
+              <div className="mt-3 font-mono font-bold text-[12px] text-[var(--green)] uppercase tracking-[0.1em]">
+                {a.alt}
+              </div>
+              <p className="mt-3 font-light text-[11px] text-[var(--silver-dark)] leading-[1.5]">{a.rationale}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== SLIDE 16 — ENCERRAMENTO ==================== */
+function Slide16() {
+  return (
+    <div className="relative w-full h-full bg-[var(--black)] flex flex-col items-center justify-center px-[80px]">
+      <div className="slide-content active flex flex-col items-center text-center">
+        <div className="w-[1px] h-[80px] bg-[var(--green)] mb-10" />
+        <blockquote
+          className="font-serif italic font-light text-[var(--silver)] max-w-[700px]"
+          style={{ fontSize: "clamp(22px, 3vw, 34px)", lineHeight: 1.5 }}
+        >
+          “A Newe não acredita em fórmulas.<br />
+          Acredita em projeto —<br />
+          com método, estética e responsabilidade.”
+        </blockquote>
+        <div className="mt-10 font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--silver-dark)]">
+          NOSSO JEITO DE SER · HYNDRA GROUP
+        </div>
+        <div
+          className="mt-12 w-[80px] h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, #9DCA79, transparent)" }}
+        />
+        <div className="mt-12 font-display font-extralight text-[15px] text-[var(--silver-dark)] tracking-[0.05em] max-w-[600px]">
+          O Nexus não é uma plataforma. É a prova de que a cultura pode ser arquitetada.
+        </div>
+      </div>
+      <SlideFooter>
+        Marlon Silva · Head de Pessoas e Cultura · Hyndra | Newe · Maio 2026
+      </SlideFooter>
+    </div>
+  );
+}
+
+/* ==================== REGISTRY ==================== */
+export const slides: Array<{ title: string; render: () => React.ReactNode }> = [
+  { title: "Capa", render: () => <Slide01 /> },
+  { title: "A Tese Estratégica", render: () => <Slide02 /> },
+  { title: "Arquitetura do Sistema", render: () => <Slide03 /> },
+  ...products.map((p, i) => ({
+    title: p.name,
+    render: () => <ProductSlide p={p} idx={i} />,
+  })),
+  { title: "Análise Financeira", render: () => <Slide14 /> },
+  { title: "Nomes Alternativos", render: () => <Slide15 /> },
+  { title: "Encerramento", render: () => <Slide16 /> },
+];
