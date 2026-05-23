@@ -62,7 +62,7 @@ function LogoAnatomyParallax() {
         <div className="relative">
           <div className="absolute -left-[34px] top-[14px] bottom-[34px] w-[3px] bg-[var(--green)] opacity-70" />
           <div
-            className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.08]"
+            className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.18]"
             style={{ fontSize: "520px", letterSpacing: "-0.025em" }}
           >
             NEXUS
