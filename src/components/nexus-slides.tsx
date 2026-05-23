@@ -129,10 +129,10 @@ function LogoAnatomyParallax() {
         ))}
       </div>
 
-      {/* Vinheta */}
+      {/* Vinheta — leve, só para legibilidade do bloco de texto à esquerda */}
       <div className="absolute inset-0" style={{
         background:
-          "radial-gradient(ellipse at 28% 50%, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
+          "radial-gradient(ellipse at 25% 50%, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 38%, rgba(10,10,10,0.25) 70%, rgba(10,10,10,0) 100%)",
       }} />
     </div>
   );
