@@ -412,41 +412,54 @@ function AcademiaLideresParallax() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "#0a0a0a" }}>
-      {/* Camada 1 — foto principal (nano banana) */}
+      {/* Camada 1 — foto principal ancorada à direita */}
       <div className="absolute inset-0" style={layer(10)}>
         <img
           src={academiaLideresHero}
           alt="Academia de Líderes Newe — formandos"
-          className="w-full h-full object-cover"
-          style={{ filter: "contrast(1.05) saturate(0.95)" }}
-        />
-        {/* Vinheta para profundidade */}
-        <div
-          className="absolute inset-0 pointer-events-none"
+          className="w-full h-full"
           style={{
-            background:
-              "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.45) 85%, rgba(0,0,0,0.75) 100%)",
+            objectFit: "cover",
+            objectPosition: "right center",
+            filter: "contrast(1.06) saturate(0.96)",
           }}
         />
-        {/* Gradiente para legibilidade lateral */}
+        {/* Vinheta sutil para profundidade */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.25) 22%, rgba(10,10,10,0) 45%, rgba(10,10,10,0) 60%, rgba(10,10,10,0.55) 100%)",
+              "radial-gradient(ellipse at 72% 50%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.7) 100%)",
+          }}
+        />
+        {/* Gradiente horizontal: escurece o lado esquerdo, integrando com a coluna escura */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.92) 18%, rgba(10,10,10,0.72) 32%, rgba(10,10,10,0.4) 48%, rgba(10,10,10,0.12) 62%, rgba(10,10,10,0) 78%)",
+          }}
+        />
+        {/* Borda inferior escura para assentar a logo */}
+        <div
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          style={{
+            height: "32%",
+            background:
+              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.55) 70%, rgba(10,10,10,0.85) 100%)",
           }}
         />
       </div>
 
-      {/* Camada 2 — brilho verde sutil acima da cena */}
+      {/* Camada 2 — brilho verde sutil sobre o lado direito */}
       <div className="absolute inset-0 pointer-events-none" style={layer(22)}>
         <div
           className="absolute"
           style={{
-            top: "8%", left: "50%", width: 520, height: 220, transform: "translateX(-50%)",
+            top: "10%", right: "8%", width: 540, height: 260,
             background:
-              "radial-gradient(ellipse at center, rgba(157,202,121,0.28) 0%, rgba(157,202,121,0.08) 45%, rgba(157,202,121,0) 75%)",
-            filter: "blur(12px)",
+              "radial-gradient(ellipse at center, rgba(157,202,121,0.22) 0%, rgba(157,202,121,0.06) 50%, rgba(157,202,121,0) 78%)",
+            filter: "blur(14px)",
           }}
         />
       </div>
@@ -466,7 +479,7 @@ function AcademiaLideresParallax() {
           className="absolute"
           style={{ top: "9%", right: "7%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
         >
-          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.7)" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.75)" }}>
             PRODUTO · 05/10
           </div>
           <div style={{ width: 110, height: 1, background: "rgba(255,255,255,0.45)" }} />
@@ -480,7 +493,7 @@ function AcademiaLideresParallax() {
             background: "rgba(255,255,255,0.96)",
             padding: "18px 24px",
             borderRadius: 4,
-            boxShadow: "0 18px 50px -10px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)",
+            boxShadow: "0 18px 50px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
             backdropFilter: "blur(6px)",
           }}
         >
@@ -491,15 +504,6 @@ function AcademiaLideresParallax() {
           />
         </div>
       </div>
-
-      {/* Vinheta esquerda para integração com a coluna escura */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.12) 18%, rgba(10,10,10,0) 40%)",
-        }}
-      />
     </div>
   );
 }
