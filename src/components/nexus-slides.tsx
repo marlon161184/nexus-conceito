@@ -712,7 +712,10 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
         <div className="slide-foto relative overflow-hidden">
           {p.name === "All Aboard" ? (
             <AllAboardParallax />
+          ) : p.name === "PAR 2026" ? (
+            <PAR2026Parallax />
           ) : (
+
             <>
               <img
                 src={p.image}
