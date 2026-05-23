@@ -18,7 +18,8 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
 function LogoAnatomyParallax() {
   const ref = useRef<HTMLDivElement>(null);
-  const [p, setP] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [auto, setAuto] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const el = ref.current;
@@ -29,7 +30,7 @@ function LogoAnatomyParallax() {
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setP({ x: nx, y: ny }));
+      raf = requestAnimationFrame(() => setMouse({ x: nx, y: ny }));
     };
     window.addEventListener("mousemove", onMove);
     return () => {
@@ -38,9 +39,24 @@ function LogoAnatomyParallax() {
     };
   }, []);
 
+  // Float automático contínuo — garante que o parallax respira mesmo sem mouse
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const s = (t - start) / 1000;
+      setAuto({ x: Math.sin(s * 0.5) * 0.15, y: Math.cos(s * 0.4) * 0.12 });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const px = mouse.x + auto.x;
+  const py = mouse.y + auto.y;
+
   const layer = (depth: number): React.CSSProperties => ({
-    transform: `translate3d(${p.x * depth}px, ${p.y * depth}px, 0)`,
-    transition: "transform 600ms cubic-bezier(0.22, 1, 0.36, 1)",
+    transform: `translate3d(${px * depth}px, ${py * depth}px, 0)`,
     willChange: "transform",
   });
 
@@ -62,7 +78,7 @@ function LogoAnatomyParallax() {
         <div className="relative">
           <div className="absolute -left-[34px] top-[14px] bottom-[34px] w-[3px] bg-[var(--green)] opacity-70" />
           <div
-            className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.08]"
+            className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.18]"
             style={{ fontSize: "520px", letterSpacing: "-0.025em" }}
           >
             NEXUS
@@ -129,10 +145,10 @@ function LogoAnatomyParallax() {
         ))}
       </div>
 
-      {/* Vinheta */}
+      {/* Vinheta — leve, só para legibilidade do bloco de texto à esquerda */}
       <div className="absolute inset-0" style={{
         background:
-          "radial-gradient(ellipse at 28% 50%, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
+          "radial-gradient(ellipse at 25% 50%, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 38%, rgba(10,10,10,0.25) 70%, rgba(10,10,10,0) 100%)",
       }} />
     </div>
   );
