@@ -4,6 +4,7 @@ import allAboardPavilion from "@/assets/all-aboard-pavilion.png";
 import allAboardType from "@/assets/all-aboard-type.jpg";
 import par2026Type from "@/assets/par-2026-type.jpg";
 import hyndraLogo from "@/assets/hyndra-logo.png";
+import academiaLideresLogo from "@/assets/academia-lideres.jpg";
 
 
 /* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
