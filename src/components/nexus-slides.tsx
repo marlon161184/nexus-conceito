@@ -16,7 +16,11 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
-function LogoAnatomyParallax() {
+function LogoAnatomyParallax({
+  variant = "full",
+}: {
+  variant?: "full" | "left-panel";
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [auto, setAuto] = useState({ x: 0, y: 0 });
