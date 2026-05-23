@@ -883,8 +883,9 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
           ) : p.name === "PAR 2026" ? (
             <PAR2026Parallax />
           ) : p.name === "Academia de Líderes Newe" ? (
-            null
+            <AcademiaLideresParallax />
           ) : (
+
 
 
             <>
