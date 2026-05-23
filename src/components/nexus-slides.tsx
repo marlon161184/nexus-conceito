@@ -1,4 +1,4 @@
-import { products, altNames, modules, type Product } from "@/lib/nexus-data";
+import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
 
