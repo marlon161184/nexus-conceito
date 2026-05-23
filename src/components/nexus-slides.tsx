@@ -469,18 +469,19 @@ function AcademiaLideresParallax() {
               <path d="M 296 60 l 4 -16 l 4 16 l 16 4 l -16 4 l -4 16 l -4 -16 l -16 -4 z" fill="#9DCA79" opacity="0.85" />
             </g>
 
-            {/* Três figuras emergem (clip-path: máscara mantém só o que está acima do livro) */}
-            <g clipPath="url(#alBookMask)">
-              <Figure cx={180} scale={0.78} className="al-color-light" delay="0s" />
-              <Figure cx={320} scale={0.78} className="al-color-dark" delay="0.18s" />
-              <Figure cx={250} scale={1} className="al-color-green" delay="0.36s" />
-            </g>
-            {/* Máscara: tudo acima do topo das páginas (y < 250) */}
+            {/* Máscara: tudo acima do topo das páginas */}
             <defs>
               <clipPath id="alBookMask">
                 <rect x="-20" y="-20" width="540" height="270" />
               </clipPath>
             </defs>
+
+            {/* Três figuras emergem do livro (mascaradas pelo topo das páginas) */}
+            <g clipPath="url(#alBookMask)">
+              <Figure cx={180} scale={0.78} className="al-color-light" delay="0s" />
+              <Figure cx={320} scale={0.78} className="al-color-dark" delay="0.18s" />
+              <Figure cx={250} scale={1} className="al-color-green" delay="0.36s" />
+            </g>
 
             {/* LIVRO ABERTO */}
             <g>
