@@ -412,7 +412,7 @@ function AcademiaLideresParallax() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "#0a0a0a" }}>
-      {/* Camada 1 — foto principal ancorada à direita */}
+      {/* Camada 1 — foto principal em tela cheia */}
       <div className="absolute inset-0" style={layer(10)}>
         <img
           src={academiaLideresHero}
@@ -420,8 +420,8 @@ function AcademiaLideresParallax() {
           className="w-full h-full"
           style={{
             objectFit: "cover",
-            objectPosition: "right center",
-            filter: "contrast(1.06) saturate(0.96)",
+            objectPosition: "center center",
+            filter: "contrast(1.04) saturate(0.98) brightness(0.95)",
           }}
         />
         {/* Vinheta sutil para profundidade */}
@@ -429,37 +429,37 @@ function AcademiaLideresParallax() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at 72% 50%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.7) 100%)",
+              "radial-gradient(ellipse at 55% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.25) 85%, rgba(0,0,0,0.55) 100%)",
           }}
         />
-        {/* Gradiente horizontal: escurece o lado esquerdo, integrando com a coluna escura */}
+        {/* Véu escuro suave do lado esquerdo, apenas para legibilidade do texto */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.92) 18%, rgba(10,10,10,0.72) 32%, rgba(10,10,10,0.4) 48%, rgba(10,10,10,0.12) 62%, rgba(10,10,10,0) 78%)",
+              "linear-gradient(90deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.42) 22%, rgba(10,10,10,0.18) 42%, rgba(10,10,10,0.04) 60%, rgba(10,10,10,0) 78%)",
           }}
         />
-        {/* Borda inferior escura para assentar a logo */}
+        {/* Borda inferior levemente escurecida */}
         <div
           className="absolute inset-x-0 bottom-0 pointer-events-none"
           style={{
-            height: "32%",
+            height: "26%",
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.55) 70%, rgba(10,10,10,0.85) 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.28) 70%, rgba(10,10,10,0.55) 100%)",
           }}
         />
       </div>
 
-      {/* Camada 2 — brilho verde sutil sobre o lado direito */}
+      {/* Camada 2 — brilho verde sutil acima da cena */}
       <div className="absolute inset-0 pointer-events-none" style={layer(22)}>
         <div
           className="absolute"
           style={{
-            top: "10%", right: "8%", width: 540, height: 260,
+            top: "8%", left: "50%", width: 620, height: 260, transform: "translateX(-50%)",
             background:
-              "radial-gradient(ellipse at center, rgba(157,202,121,0.22) 0%, rgba(157,202,121,0.06) 50%, rgba(157,202,121,0) 78%)",
-            filter: "blur(14px)",
+              "radial-gradient(ellipse at center, rgba(157,202,121,0.18) 0%, rgba(157,202,121,0.05) 50%, rgba(157,202,121,0) 78%)",
+            filter: "blur(16px)",
           }}
         />
       </div>
@@ -468,7 +468,7 @@ function AcademiaLideresParallax() {
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div
           className="absolute"
-          style={{ top: "9%", left: "7%", display: "flex", alignItems: "center", gap: 10 }}
+          style={{ top: "6%", left: "5%", display: "flex", alignItems: "center", gap: 10 }}
         >
           <div style={{ width: 56, height: 1, background: "#9DCA79" }} />
           <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>
@@ -477,31 +477,12 @@ function AcademiaLideresParallax() {
         </div>
         <div
           className="absolute"
-          style={{ top: "9%", right: "7%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
+          style={{ top: "6%", right: "5%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
         >
-          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.75)" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>
             PRODUTO · 05/10
           </div>
-          <div style={{ width: 110, height: 1, background: "rgba(255,255,255,0.45)" }} />
-        </div>
-      </div>
-
-      {/* Camada 4 — LOGOMARCA Academia de Líderes (canto inferior direito) */}
-      <div className="absolute pointer-events-none" style={{ ...layer(58), right: "5%", bottom: "7%" }}>
-        <div
-          style={{
-            background: "rgba(255,255,255,0.96)",
-            padding: "18px 24px",
-            borderRadius: 4,
-            boxShadow: "0 18px 50px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
-            backdropFilter: "blur(6px)",
-          }}
-        >
-          <img
-            src={academiaLideresLogo}
-            alt="Academia de Líderes Newe — Formação em quem constrói o urbanismo"
-            style={{ width: 320, height: "auto", display: "block" }}
-          />
+          <div style={{ width: 110, height: 1, background: "rgba(255,255,255,0.55)" }} />
         </div>
       </div>
     </div>
@@ -816,10 +797,18 @@ const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
 
 function ProductSlide({ p, idx }: { p: Product; idx: number }) {
   const pct = (p.savingsValue / MAX_SAVING) * 100;
+  const isAcademia = p.name === "Academia de Líderes Newe";
   return (
     <div className="relative w-full h-full bg-[var(--black)] flex flex-col overflow-hidden">
+      {/* Parallax em tela cheia para Academia de Líderes */}
+      {isAcademia && (
+        <div className="absolute inset-0 z-0">
+          <AcademiaLideresParallax />
+        </div>
+      )}
       {/* Main 55 / 45 grid */}
       <div className="flex-1 min-h-0 grid grid-cols-[55%_45%] relative">
+
         {/* LEFT — textual content */}
         <div className="slide-content active relative px-[80px] py-[60px] flex flex-col gap-7 z-10">
           <Eyebrow>
@@ -900,8 +889,9 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
           ) : p.name === "PAR 2026" ? (
             <PAR2026Parallax />
           ) : p.name === "Academia de Líderes Newe" ? (
-            <AcademiaLideresParallax />
+            null
           ) : (
+
 
             <>
               <img
