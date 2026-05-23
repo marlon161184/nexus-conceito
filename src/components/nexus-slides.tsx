@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 import allAboardPavilion from "@/assets/all-aboard-pavilion.png";
 import allAboardType from "@/assets/all-aboard-type.jpg";
+import par2026Type from "@/assets/par-2026-type.jpg";
+import hyndraLogo from "@/assets/hyndra-logo.png";
+
 
 /* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
 function AllAboardParallax() {
