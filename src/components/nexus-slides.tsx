@@ -18,7 +18,8 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
 function LogoAnatomyParallax() {
   const ref = useRef<HTMLDivElement>(null);
-  const [p, setP] = useState({ x: 0, y: 0 });
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [auto, setAuto] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const el = ref.current;
@@ -29,7 +30,7 @@ function LogoAnatomyParallax() {
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setP({ x: nx, y: ny }));
+      raf = requestAnimationFrame(() => setMouse({ x: nx, y: ny }));
     };
     window.addEventListener("mousemove", onMove);
     return () => {
@@ -38,9 +39,24 @@ function LogoAnatomyParallax() {
     };
   }, []);
 
+  // Float automático contínuo — garante que o parallax respira mesmo sem mouse
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const s = (t - start) / 1000;
+      setAuto({ x: Math.sin(s * 0.5) * 0.15, y: Math.cos(s * 0.4) * 0.12 });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const px = mouse.x + auto.x;
+  const py = mouse.y + auto.y;
+
   const layer = (depth: number): React.CSSProperties => ({
-    transform: `translate3d(${p.x * depth}px, ${p.y * depth}px, 0)`,
-    transition: "transform 600ms cubic-bezier(0.22, 1, 0.36, 1)",
+    transform: `translate3d(${px * depth}px, ${py * depth}px, 0)`,
     willChange: "transform",
   });
 
