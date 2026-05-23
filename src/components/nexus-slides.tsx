@@ -83,7 +83,7 @@ function LogoAnatomyParallax({
           <div className="absolute -left-[34px] top-[14px] bottom-[34px] w-[3px] bg-[var(--green)] opacity-70" />
           <div
             className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.18]"
-            style={{ fontSize: "520px", letterSpacing: "-0.025em" }}
+            style={{ fontSize: variant === "left-panel" ? "320px" : "520px", letterSpacing: "-0.025em" }}
           >
             NEXUS
           </div>
@@ -91,7 +91,7 @@ function LogoAnatomyParallax({
             <div className="h-[3px] flex-1 bg-[var(--green)] opacity-70" />
             <div className="h-[3px] w-[30%] bg-[var(--silver)] opacity-40" />
           </div>
-          <div className={`${mono} mt-6 ml-1 text-[var(--silver-dark)]/60`} style={{ letterSpacing: "0.35em", fontSize: "22px" }}>
+          <div className={`${mono} mt-6 ml-1 text-[var(--silver-dark)]/60`} style={{ letterSpacing: "0.35em", fontSize: variant === "left-panel" ? "14px" : "22px" }}>
             NOSSO JEITO DE SER
           </div>
         </div>
