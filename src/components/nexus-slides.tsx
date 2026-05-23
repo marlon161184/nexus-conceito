@@ -4,7 +4,8 @@ import allAboardPavilion from "@/assets/all-aboard-pavilion.png";
 import allAboardType from "@/assets/all-aboard-type.jpg";
 import par2026Type from "@/assets/par-2026-type.jpg";
 import hyndraLogo from "@/assets/hyndra-logo.png";
-import academiaLideresLogo from "@/assets/academia-lideres.jpg";
+import academiaLideresLogo from "@/assets/academia-lideres-logo.png";
+import academiaLideresHero from "@/assets/academia-lideres-hero.jpg";
 
 
 /* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
@@ -410,171 +411,84 @@ function AcademiaLideresParallax() {
   );
 
   return (
-    <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "#f4f3ef" }}>
-      {/* Vinheta sutil */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 55%, rgba(255,255,255,0) 0%, rgba(0,0,0,0.05) 70%, rgba(0,0,0,0.14) 100%)",
-        }}
-      />
-
-      {/* Logo original como referência sutil ao fundo */}
-      <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        style={layer(8)}
-      >
+    <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "#0a0a0a" }}>
+      {/* Camada 1 — foto principal (nano banana) */}
+      <div className="absolute inset-0" style={layer(10)}>
         <img
-          src={academiaLideresLogo}
-          alt=""
-          style={{ width: "78%", opacity: 0.05, filter: "grayscale(1) contrast(1.2)" }}
+          src={academiaLideresHero}
+          alt="Academia de Líderes Newe — formandos"
+          className="w-full h-full object-cover"
+          style={{ filter: "contrast(1.05) saturate(0.95)" }}
+        />
+        {/* Vinheta para profundidade */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.45) 85%, rgba(0,0,0,0.75) 100%)",
+          }}
+        />
+        {/* Gradiente para legibilidade lateral */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.25) 22%, rgba(10,10,10,0) 45%, rgba(10,10,10,0) 60%, rgba(10,10,10,0.55) 100%)",
+          }}
         />
       </div>
 
-      {/* Cena SVG */}
-      <div className="absolute inset-0 flex items-center justify-center" style={layer(22)}>
-        <svg viewBox="0 0 980 560" style={{ width: "84%", height: "auto" }}>
-          <defs>
-            <radialGradient id="alGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#9DCA79" stopOpacity="0.9" />
-              <stop offset="55%" stopColor="#9DCA79" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#9DCA79" stopOpacity="0" />
-            </radialGradient>
-            <filter id="alSoftBlur" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="8" />
-            </filter>
-          </defs>
-
-          {/* LADO ESQUERDO — pessoas + livro */}
-          <g transform="translate(70, 60)">
-            {/* Brilho verde acima das pessoas */}
-            <ellipse
-              cx={250}
-              cy={80}
-              rx={150}
-              ry={50}
-              fill="url(#alGlow)"
-              className="al-glow"
-              filter="url(#alSoftBlur)"
-            />
-            {/* Sparkles */}
-            <g className="al-spark" style={{ animationDelay: "0.05s" }}>
-              <path d="M 210 60 l 4 -16 l 4 16 l 16 4 l -16 4 l -4 16 l -4 -16 l -16 -4 z" fill="#9DCA79" opacity="0.85" />
-            </g>
-            <g className="al-spark" style={{ animationDelay: "0.22s" }}>
-              <path d="M 250 28 l 5 -22 l 5 22 l 22 5 l -22 5 l -5 22 l -5 -22 l -22 -5 z" fill="#9DCA79" />
-            </g>
-            <g className="al-spark" style={{ animationDelay: "0.4s" }}>
-              <path d="M 296 60 l 4 -16 l 4 16 l 16 4 l -16 4 l -4 16 l -4 -16 l -16 -4 z" fill="#9DCA79" opacity="0.85" />
-            </g>
-
-            {/* Máscara: tudo acima do topo das páginas */}
-            <defs>
-              <clipPath id="alBookMask">
-                <rect x="-20" y="-20" width="540" height="270" />
-              </clipPath>
-            </defs>
-
-            {/* Três figuras emergem do livro (mascaradas pelo topo das páginas) */}
-            <g clipPath="url(#alBookMask)">
-              <Figure cx={180} scale={0.78} className="al-color-light" delay="0s" />
-              <Figure cx={320} scale={0.78} className="al-color-dark" delay="0.18s" />
-              <Figure cx={250} scale={1} className="al-color-green" delay="0.36s" />
-            </g>
-
-            {/* LIVRO ABERTO */}
-            <g>
-              <ellipse cx={250} cy={352} rx={220} ry={11} fill="rgba(0,0,0,0.2)" />
-              {/* página esquerda */}
-              <path
-                d="M 50 248 Q 150 234 250 256 L 250 332 Q 150 312 50 326 Z"
-                fill="#ececea"
-                stroke="#0a0a0a"
-                strokeWidth="3"
-              />
-              {/* página direita */}
-              <path
-                d="M 450 248 Q 350 234 250 256 L 250 332 Q 350 312 450 326 Z"
-                fill="#b8b7b3"
-                stroke="#0a0a0a"
-                strokeWidth="3"
-              />
-              {/* base/lombada */}
-              <path
-                d="M 40 322 L 52 348 L 250 358 L 448 348 L 460 322 L 448 326 L 250 338 L 52 326 Z"
-                fill="#0a0a0a"
-              />
-              <path d="M 250 256 L 250 332" stroke="#0a0a0a" strokeWidth="2" />
-              {/* linhas de texto sugestivas */}
-              <path d="M 90 268 L 220 274" stroke="rgba(10,10,10,0.18)" strokeWidth="1.2" />
-              <path d="M 90 282 L 220 288" stroke="rgba(10,10,10,0.18)" strokeWidth="1.2" />
-              <path d="M 280 274 L 410 268" stroke="rgba(10,10,10,0.18)" strokeWidth="1.2" />
-              <path d="M 280 288 L 410 282" stroke="rgba(10,10,10,0.18)" strokeWidth="1.2" />
-            </g>
-          </g>
-
-          {/* LADO DIREITO — wordmark */}
-          <g transform="translate(560, 150)">
-            <text
-              x="0" y="0"
-              fontFamily="Plus Jakarta Sans, system-ui, sans-serif"
-              fontSize="44" fontWeight="700" fill="#0a0a0a" letterSpacing="-0.01em"
-            >
-              academia
-            </text>
-            <text
-              x="0" y="52"
-              fontFamily="Plus Jakarta Sans, system-ui, sans-serif"
-              fontSize="44" fontWeight="700" fill="#0a0a0a" letterSpacing="-0.01em"
-            >
-              de líderes
-            </text>
-            <text
-              x="0" y="138"
-              fontFamily="Plus Jakarta Sans, system-ui, sans-serif"
-              fontSize="92" fontWeight="800" fill="#0a0a0a" letterSpacing="-0.03em"
-            >
-              <tspan>new</tspan><tspan className="al-e">e</tspan>
-            </text>
-            <text
-              x="318" y="150"
-              fontFamily="Plus Jakarta Sans, system-ui, sans-serif"
-              fontSize="15" fontWeight="500" fill="#0a0a0a"
-            >
-              by hyndra
-            </text>
-            <line x1="0" y1="168" x2="370" y2="168" stroke="#0a0a0a" strokeWidth="1.2" />
-            <text
-              x="0" y="194"
-              fontFamily="Space Mono, ui-monospace, monospace"
-              fontSize="12" fill="#0a0a0a" letterSpacing="0.18em"
-            >
-              FORMAÇÃO EM QUEM CONSTRÓI O URBANISMO
-            </text>
-          </g>
-        </svg>
+      {/* Camada 2 — brilho verde sutil acima da cena */}
+      <div className="absolute inset-0 pointer-events-none" style={layer(22)}>
+        <div
+          className="absolute"
+          style={{
+            top: "8%", left: "50%", width: 520, height: 220, transform: "translateX(-50%)",
+            background:
+              "radial-gradient(ellipse at center, rgba(157,202,121,0.28) 0%, rgba(157,202,121,0.08) 45%, rgba(157,202,121,0) 75%)",
+            filter: "blur(12px)",
+          }}
+        />
       </div>
 
-      {/* Anotações editoriais */}
+      {/* Camada 3 — anotações editoriais */}
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div
           className="absolute"
-          style={{ top: "10%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}
+          style={{ top: "9%", left: "7%", display: "flex", alignItems: "center", gap: 10 }}
         >
-          <div style={{ width: 56, height: 1, background: "#0a0a0a" }} />
-          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#0a0a0a" }}>
+          <div style={{ width: 56, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>
             FORJA · ESCOLA DE COMANDO
           </div>
         </div>
         <div
           className="absolute"
-          style={{ bottom: "9%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
+          style={{ top: "9%", right: "7%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
         >
-          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(10,10,10,0.55)" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.7)" }}>
             PRODUTO · 05/10
           </div>
-          <div style={{ width: 110, height: 1, background: "rgba(10,10,10,0.35)" }} />
+          <div style={{ width: 110, height: 1, background: "rgba(255,255,255,0.45)" }} />
+        </div>
+      </div>
+
+      {/* Camada 4 — LOGOMARCA Academia de Líderes (canto inferior direito) */}
+      <div className="absolute pointer-events-none" style={{ ...layer(58), right: "5%", bottom: "7%" }}>
+        <div
+          style={{
+            background: "rgba(255,255,255,0.96)",
+            padding: "18px 24px",
+            borderRadius: 4,
+            boxShadow: "0 18px 50px -10px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          <img
+            src={academiaLideresLogo}
+            alt="Academia de Líderes Newe — Formação em quem constrói o urbanismo"
+            style={{ width: 320, height: "auto", display: "block" }}
+          />
         </div>
       </div>
 
