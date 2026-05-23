@@ -220,14 +220,25 @@ function Slide02() {
   return (
     <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex">
       <div className="slide-content active w-full grid grid-cols-[40%_60%] gap-16 items-center">
-        <div>
-          <Eyebrow>A TESE ESTRATÉGICA</Eyebrow>
-          <h2
-            className="mt-8 font-display font-extralight text-[var(--white-warm)]"
-            style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
-          >
-            Por que o<br />Nexus existe.
-          </h2>
+        {/* Left panel — tom mais claro + parallax da anatomia da logo */}
+        <div
+          className="relative h-full flex flex-col justify-center overflow-hidden rounded-sm"
+          style={{
+            background:
+              "linear-gradient(135deg, #2a2a2a 0%, #232323 55%, #1c1c1c 100%)",
+            boxShadow: "inset 0 0 0 1px rgba(192,192,192,0.06)",
+          }}
+        >
+          <LogoAnatomyParallax variant="left-panel" />
+          <div className="relative z-10 px-10 py-12">
+            <Eyebrow>A TESE ESTRATÉGICA</Eyebrow>
+            <h2
+              className="mt-8 font-display font-extralight text-[var(--white-warm)]"
+              style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              Por que o<br />Nexus existe.
+            </h2>
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-5">
           {blocks.map((b) => (
