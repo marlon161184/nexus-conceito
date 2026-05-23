@@ -797,17 +797,11 @@ const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
 
 function ProductSlide({ p, idx }: { p: Product; idx: number }) {
   const pct = (p.savingsValue / MAX_SAVING) * 100;
-  const isAcademia = p.name === "Academia de Líderes Newe";
   return (
     <div className="relative w-full h-full bg-[var(--black)] flex flex-col overflow-hidden">
-      {/* Parallax em tela cheia para Academia de Líderes */}
-      {isAcademia && (
-        <div className="absolute inset-0 z-0">
-          <AcademiaLideresParallax />
-        </div>
-      )}
       {/* Main 55 / 45 grid */}
       <div className="flex-1 min-h-0 grid grid-cols-[55%_45%] relative">
+
 
         {/* LEFT — textual content */}
         <div className="slide-content active relative px-[80px] py-[60px] flex flex-col gap-7 z-10">
