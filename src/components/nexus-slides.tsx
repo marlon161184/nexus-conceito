@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
