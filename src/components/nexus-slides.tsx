@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 import allAboardPavilion from "@/assets/all-aboard-pavilion.png";
 import allAboardType from "@/assets/all-aboard-type.jpg";
+import par2026Type from "@/assets/par-2026-type.jpg";
+import hyndraLogo from "@/assets/hyndra-logo.png";
+
 
 /* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
 function AllAboardParallax() {
@@ -150,6 +153,179 @@ function AllAboardParallax() {
     </div>
   );
 }
+
+/* ==================== PAR 2026 — PARALLAX DE MERECIMENTO ==================== */
+function PAR2026Parallax() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [auto, setAuto] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setMouse({ x: nx, y: ny }));
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const e = (t - start) / 1000;
+      setAuto({ x: Math.sin(e * 0.18) * 0.18, y: Math.cos(e * 0.14) * 0.12 });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const layer = (depth: number): React.CSSProperties => ({
+    transform: `translate3d(${(mouse.x + auto.x) * depth}px, ${(mouse.y + auto.y) * depth}px, 0)`,
+    willChange: "transform",
+  });
+
+  // Barras verticais que brilham em sequência — métrica viva de merecimento
+  const BARS = 12;
+
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#101010]">
+      {/* Camada 1 — tipografia PAR 2026 como base */}
+      <div className="absolute inset-0" style={{ ...layer(12), inset: "-30px" }}>
+        <img
+          src={par2026Type}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "grayscale(0.2) brightness(0.78) contrast(1.1)" }}
+        />
+      </div>
+
+      {/* Camada 2 — barras verticais que brilham em sequência (uma a uma) */}
+      <div className="absolute inset-0 pointer-events-none" style={layer(26)}>
+        <div className="absolute inset-0 flex items-stretch justify-between px-[6%] py-[12%]">
+          {Array.from({ length: BARS }).map((_, i) => (
+            <div
+              key={i}
+              className="par-bar"
+              style={{
+                width: 2,
+                background:
+                  "linear-gradient(180deg, rgba(192,192,192,0.18) 0%, rgba(192,192,192,0.32) 50%, rgba(192,192,192,0.18) 100%)",
+                animationDelay: `${i * 0.35}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Camada 3 — marca d'água Hyndra (canto inferior esquerdo, grande, sutil) */}
+      <div className="absolute pointer-events-none" style={{ ...layer(20), bottom: "-8%", left: "-6%", width: "55%" }}>
+        <img
+          src={hyndraLogo}
+          alt=""
+          className="w-full h-auto"
+          style={{
+            opacity: 0.07,
+            filter: "brightness(2) contrast(1.2)",
+            mixBlendMode: "screen",
+          }}
+        />
+      </div>
+
+      {/* Vinheta para integrar com a coluna esquerda */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.35) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        }}
+      />
+
+      {/* Camada 4 — logo Hyndra nítido no canto inferior direito (componente do parallax) */}
+      <div
+        className="absolute"
+        style={{
+          ...layer(48),
+          bottom: "7%",
+          right: "7%",
+          width: 88,
+        }}
+      >
+        <img
+          src={hyndraLogo}
+          alt="Hyndra"
+          className="w-full h-auto"
+          style={{
+            opacity: 0.92,
+            filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.6))",
+          }}
+        />
+        <div
+          className="font-mono uppercase mt-2 text-right"
+          style={{
+            fontSize: 8,
+            letterSpacing: "0.3em",
+            color: "rgba(192,192,192,0.55)",
+          }}
+        >
+          HYNDRA · GRUPO
+        </div>
+      </div>
+
+      {/* Camada 5 — anotações editoriais */}
+      <div className="absolute inset-0 pointer-events-none" style={layer(58)}>
+        <div
+          className="absolute"
+          style={{ top: "16%", right: "8%", display: "flex", alignItems: "center", gap: 10 }}
+        >
+          <div style={{ width: 56, height: 1, background: "var(--green)" }} />
+          <div
+            className="font-mono uppercase"
+            style={{ fontSize: 9, letterSpacing: "0.3em", color: "var(--green)" }}
+          >
+            MOTOR DE MERECIMENTO
+          </div>
+        </div>
+
+        <div
+          className="absolute"
+          style={{ top: "26%", left: "8%", display: "flex", flexDirection: "column", gap: 6 }}
+        >
+          <div
+            className="font-mono uppercase"
+            style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(192,192,192,0.5)" }}
+          >
+            INDICADOR · 03/10
+          </div>
+          <div style={{ width: 110, height: 1, background: "rgba(192,192,192,0.3)" }} />
+        </div>
+
+        <div className="absolute" style={{ top: "44%", right: "14%", width: 14, height: 14 }}>
+          <div className="absolute inset-y-0 left-1/2 w-px bg-[var(--green)] opacity-70" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-[var(--green)] opacity-70" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
 
@@ -536,7 +712,10 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
         <div className="slide-foto relative overflow-hidden">
           {p.name === "All Aboard" ? (
             <AllAboardParallax />
+          ) : p.name === "PAR 2026" ? (
+            <PAR2026Parallax />
           ) : (
+
             <>
               <img
                 src={p.image}
