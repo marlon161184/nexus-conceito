@@ -2,6 +2,7 @@ export interface Product {
   n: string; // "01"
   module: string;
   moduleN: string; // "01"
+  moduleSlug: "cultura" | "pessoas" | "conhecimento" | "comunidade" | "governanca";
   name: string;
   alt: string;
   concept: string;
@@ -14,7 +15,17 @@ export interface Product {
   nexus: string;
   savings: string;
   savingsValue: number; // for bar proportion (in k)
+  image: string;
+  caption: string;
 }
+
+export const FALLBACK_IMAGES: Record<Product["moduleSlug"], string> = {
+  cultura: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=1400&q=80",
+  pessoas: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1400&q=80",
+  conhecimento: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80",
+  comunidade: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80",
+  governanca: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80",
+};
 
 export const products: Product[] = [
   {
