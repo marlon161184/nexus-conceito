@@ -532,35 +532,39 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
           </div>
         </div>
 
-        {/* RIGHT — editorial photo */}
+        {/* RIGHT — editorial photo (ou parallax para All Aboard) */}
         <div className="slide-foto relative overflow-hidden">
-          <img
-            src={p.image}
-            alt=""
-            data-modulo={p.moduleSlug}
-            onError={(e) => {
-              const el = e.currentTarget;
-              const fb = FALLBACK_IMAGES[p.moduleSlug];
-              if (fb && el.src !== fb) el.src = fb;
-            }}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          {/* horizontal blend into text */}
-          <div
-            className="absolute inset-0 z-[1] pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(10,10,10,1) 0%, rgba(10,10,10,0.85) 20%, rgba(10,10,10,0.3) 60%, rgba(10,10,10,0) 100%)",
-            }}
-          />
-          {/* vertical edges */}
-          <div
-            className="absolute inset-0 z-[1] pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.9) 100%)",
-            }}
-          />
+          {p.name === "All Aboard" ? (
+            <AllAboardParallax />
+          ) : (
+            <>
+              <img
+                src={p.image}
+                alt=""
+                data-modulo={p.moduleSlug}
+                onError={(e) => {
+                  const el = e.currentTarget;
+                  const fb = FALLBACK_IMAGES[p.moduleSlug];
+                  if (fb && el.src !== fb) el.src = fb;
+                }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-0 z-[1] pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to right, rgba(10,10,10,1) 0%, rgba(10,10,10,0.85) 20%, rgba(10,10,10,0.3) 60%, rgba(10,10,10,0) 100%)",
+                }}
+              />
+              <div
+                className="absolute inset-0 z-[1] pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.9) 100%)",
+                }}
+              />
+            </>
+          )}
           <div
             className="absolute z-[2] font-serif italic"
             style={{
