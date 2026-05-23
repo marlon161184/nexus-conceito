@@ -158,3 +158,58 @@ body {
   animation: par-bar-shine 4.8s ease-in-out infinite;
   will-change: opacity, filter, box-shadow;
 }
+
+/* ACADEMIA DE LÍDERES — animação de surgimento das três pessoas + "e" verde */
+@keyframes al-rise {
+  0%   { transform: translateY(58%) scale(0.86); opacity: 0; }
+  18%  { opacity: 1; }
+  55%  { transform: translateY(0) scale(1); opacity: 1; }
+  92%  { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(58%) scale(0.86); opacity: 0; }
+}
+.al-figure {
+  transform-origin: 50% 100%;
+  transform-box: fill-box;
+  animation: al-rise 7.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform, opacity;
+}
+@keyframes al-color-side-light {
+  0%, 14%   { fill: #2a2a2a; }
+  46%, 92% { fill: #c8c8c8; }
+  100%      { fill: #2a2a2a; }
+}
+@keyframes al-color-side-dark {
+  0%, 14%   { fill: #2a2a2a; }
+  46%, 92% { fill: #4a4a4a; }
+  100%      { fill: #2a2a2a; }
+}
+@keyframes al-color-green {
+  0%, 22%   { fill: #2a2a2a; }
+  52%, 92%  { fill: #9DCA79; }
+  100%      { fill: #2a2a2a; }
+}
+.al-color-light { animation: al-color-side-light 7.2s ease-in-out infinite; }
+.al-color-dark  { animation: al-color-side-dark  7.2s ease-in-out infinite; }
+.al-color-green { animation: al-color-green      7.2s ease-in-out infinite; }
+
+@keyframes al-e-green {
+  0%, 22%   { fill: #0A0A0A; }
+  52%, 92%  { fill: #9DCA79; }
+  100%      { fill: #0A0A0A; }
+}
+.al-e { animation: al-e-green 7.2s ease-in-out infinite; }
+
+@keyframes al-glow {
+  0%, 30%  { opacity: 0; transform: translateY(8px) scale(0.6); }
+  55%      { opacity: 1; transform: translateY(0) scale(1); }
+  88%, 100% { opacity: 0; transform: translateY(-4px) scale(1.1); }
+}
+.al-glow { transform-origin: 50% 50%; transform-box: fill-box; animation: al-glow 7.2s ease-in-out infinite; will-change: transform, opacity; }
+
+@keyframes al-spark {
+  0%, 40%  { opacity: 0; transform: scale(0.4); }
+  58%      { opacity: 1; transform: scale(1.1); }
+  72%      { opacity: 0.85; transform: scale(1); }
+  90%, 100% { opacity: 0; transform: scale(0.6); }
+}
+.al-spark { transform-origin: 50% 50%; transform-box: fill-box; animation: al-spark 7.2s ease-in-out infinite; will-change: transform, opacity; }
