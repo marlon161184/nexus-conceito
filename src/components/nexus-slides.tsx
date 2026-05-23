@@ -1,5 +1,155 @@
 import { useEffect, useRef, useState } from "react";
 import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
+import allAboardPavilion from "@/assets/all-aboard-pavilion.png";
+import allAboardType from "@/assets/all-aboard-type.jpg";
+
+/* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
+function AllAboardParallax() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [auto, setAuto] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setMouse({ x: nx, y: ny }));
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const e = (t - start) / 1000;
+      setAuto({ x: Math.sin(e * 0.18) * 0.18, y: Math.cos(e * 0.14) * 0.12 });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const layer = (depth: number): React.CSSProperties => ({
+    transform: `translate3d(${(mouse.x + auto.x) * depth}px, ${(mouse.y + auto.y) * depth}px, 0)`,
+    willChange: "transform",
+  });
+
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#1a1a1a]">
+      {/* Camada 1 — fotografia arquitetônica (pavilhão de chegada) */}
+      <div className="absolute inset-0" style={{ ...layer(14), inset: "-40px" }}>
+        <img
+          src={allAboardPavilion}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "grayscale(0.35) brightness(0.62) contrast(1.05)" }}
+        />
+      </div>
+
+      {/* Camada 2 — gradiente atmosférico que rebaixa o céu e amarra com o preto da capa */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 35%, rgba(10,10,10,0.55) 75%, rgba(10,10,10,0.95) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.45) 100%)",
+        }}
+      />
+
+      {/* Camada 3 — tipografia "all aboard" flutuando, com mistura por screen */}
+      <div
+        className="absolute"
+        style={{
+          ...layer(36),
+          top: "44%",
+          left: "50%",
+          width: "120%",
+          transform: `translate(-50%, -50%) translate3d(${(mouse.x + auto.x) * 36}px, ${(mouse.y + auto.y) * 36}px, 0)`,
+          mixBlendMode: "screen",
+          opacity: 0.85,
+        }}
+      >
+        <img
+          src={allAboardType}
+          alt=""
+          className="w-full h-auto"
+          style={{ filter: "brightness(1.25) contrast(1.15)" }}
+        />
+      </div>
+
+      {/* Camada 4 — anotações editoriais (régua + marcador) */}
+      <div className="absolute inset-0 pointer-events-none" style={layer(58)}>
+        <div
+          className="absolute"
+          style={{ top: "18%", right: "8%", display: "flex", alignItems: "center", gap: 10 }}
+        >
+          <div style={{ width: 56, height: 1, background: "var(--green)" }} />
+          <div
+            className="font-mono uppercase"
+            style={{
+              fontSize: 9,
+              letterSpacing: "0.3em",
+              color: "var(--green)",
+            }}
+          >
+            RITO DE CHEGADA
+          </div>
+        </div>
+
+        <div
+          className="absolute"
+          style={{ bottom: "16%", left: "8%", display: "flex", flexDirection: "column", gap: 6 }}
+        >
+          <div
+            className="font-mono uppercase"
+            style={{
+              fontSize: 8,
+              letterSpacing: "0.3em",
+              color: "rgba(192,192,192,0.55)",
+            }}
+          >
+            PORTAL DE PASSAGEM · 02/10
+          </div>
+          <div style={{ width: 120, height: 1, background: "rgba(192,192,192,0.35)" }} />
+        </div>
+
+        {/* Cruz de medição discreta */}
+        <div
+          className="absolute"
+          style={{ top: "32%", left: "12%", width: 14, height: 14 }}
+        >
+          <div className="absolute inset-y-0 left-1/2 w-px bg-[var(--green)] opacity-70" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-[var(--green)] opacity-70" />
+        </div>
+      </div>
+
+      {/* Vinheta final para amarrar com a coluna de texto */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 70% 50%, rgba(10,10,10,0) 0%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0.75) 100%)",
+        }}
+      />
+    </div>
+  );
+}
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
 
