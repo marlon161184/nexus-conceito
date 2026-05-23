@@ -16,7 +16,11 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
-function LogoAnatomyParallax() {
+function LogoAnatomyParallax({
+  variant = "full",
+}: {
+  variant?: "full" | "left-panel";
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [auto, setAuto] = useState({ x: 0, y: 0 });
@@ -79,7 +83,7 @@ function LogoAnatomyParallax() {
           <div className="absolute -left-[34px] top-[14px] bottom-[34px] w-[3px] bg-[var(--green)] opacity-70" />
           <div
             className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.18]"
-            style={{ fontSize: "520px", letterSpacing: "-0.025em" }}
+            style={{ fontSize: variant === "left-panel" ? "320px" : "520px", letterSpacing: "-0.025em" }}
           >
             NEXUS
           </div>
@@ -87,7 +91,7 @@ function LogoAnatomyParallax() {
             <div className="h-[3px] flex-1 bg-[var(--green)] opacity-70" />
             <div className="h-[3px] w-[30%] bg-[var(--silver)] opacity-40" />
           </div>
-          <div className={`${mono} mt-6 ml-1 text-[var(--silver-dark)]/60`} style={{ letterSpacing: "0.35em", fontSize: "22px" }}>
+          <div className={`${mono} mt-6 ml-1 text-[var(--silver-dark)]/60`} style={{ letterSpacing: "0.35em", fontSize: variant === "left-panel" ? "14px" : "22px" }}>
             NOSSO JEITO DE SER
           </div>
         </div>
@@ -145,10 +149,11 @@ function LogoAnatomyParallax() {
         ))}
       </div>
 
-      {/* Vinheta — leve, só para legibilidade do bloco de texto à esquerda */}
+      {/* Vinheta — leve, só para legibilidade do bloco de texto */}
       <div className="absolute inset-0" style={{
-        background:
-          "radial-gradient(ellipse at 25% 50%, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 38%, rgba(10,10,10,0.25) 70%, rgba(10,10,10,0) 100%)",
+        background: variant === "left-panel"
+          ? "radial-gradient(ellipse at 35% 50%, rgba(28,28,28,0.35) 0%, rgba(28,28,28,0.15) 55%, rgba(28,28,28,0) 100%)"
+          : "radial-gradient(ellipse at 25% 50%, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.55) 38%, rgba(10,10,10,0.25) 70%, rgba(10,10,10,0) 100%)",
       }} />
     </div>
   );
@@ -215,14 +220,25 @@ function Slide02() {
   return (
     <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex">
       <div className="slide-content active w-full grid grid-cols-[40%_60%] gap-16 items-center">
-        <div>
-          <Eyebrow>A TESE ESTRATÉGICA</Eyebrow>
-          <h2
-            className="mt-8 font-display font-extralight text-[var(--white-warm)]"
-            style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
-          >
-            Por que o<br />Nexus existe.
-          </h2>
+        {/* Left panel — tom mais claro + parallax da anatomia da logo */}
+        <div
+          className="relative h-full flex flex-col justify-center overflow-hidden rounded-sm"
+          style={{
+            background:
+              "linear-gradient(135deg, #2a2a2a 0%, #232323 55%, #1c1c1c 100%)",
+            boxShadow: "inset 0 0 0 1px rgba(192,192,192,0.06)",
+          }}
+        >
+          <LogoAnatomyParallax variant="left-panel" />
+          <div className="relative z-10 px-10 py-12">
+            <Eyebrow>A TESE ESTRATÉGICA</Eyebrow>
+            <h2
+              className="mt-8 font-display font-extralight text-[var(--white-warm)]"
+              style={{ fontSize: "clamp(38px, 4vw, 54px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              Por que o<br />Nexus existe.
+            </h2>
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-5">
           {blocks.map((b) => (
