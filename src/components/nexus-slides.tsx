@@ -412,54 +412,54 @@ function AcademiaLideresParallax() {
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "#0a0a0a" }}>
-      {/* Camada 1 — foto principal em tela cheia */}
+      {/* Camada 1 — foto principal contida no lado direito */}
       <div className="absolute inset-0" style={layer(10)}>
         <img
           src={academiaLideresHero}
           alt="Academia de Líderes Newe — formandos"
           className="w-full h-full"
           style={{
-            objectFit: "cover",
+            objectFit: "contain",
             objectPosition: "center center",
-            filter: "contrast(1.04) saturate(0.98) brightness(0.95)",
+            filter: "grayscale(20%) brightness(0.72) contrast(1.1) saturate(0.95)",
           }}
         />
-        {/* Vinheta sutil para profundidade */}
+        {/* Vinheta suave para integrar a foto ao fundo escuro */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at 55% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.25) 85%, rgba(0,0,0,0.55) 100%)",
+              "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(10,10,10,0.45) 88%, rgba(10,10,10,0.78) 100%)",
           }}
         />
-        {/* Véu escuro suave do lado esquerdo, apenas para legibilidade do texto */}
+        {/* Sombreado nas bordas verticais para fundir nas laterais */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.42) 22%, rgba(10,10,10,0.18) 42%, rgba(10,10,10,0.04) 60%, rgba(10,10,10,0) 78%)",
+              "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 14%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.15) 86%, rgba(10,10,10,0.55) 100%)",
           }}
         />
-        {/* Borda inferior levemente escurecida */}
+        {/* Borda inferior escurecida (consistência com demais slides) */}
         <div
           className="absolute inset-x-0 bottom-0 pointer-events-none"
           style={{
-            height: "26%",
+            height: "30%",
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.28) 70%, rgba(10,10,10,0.55) 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.35) 70%, rgba(10,10,10,0.7) 100%)",
           }}
         />
       </div>
 
-      {/* Camada 2 — brilho verde sutil acima da cena */}
+      {/* Camada 2 — brilho verde sutil atrás da cena */}
       <div className="absolute inset-0 pointer-events-none" style={layer(22)}>
         <div
           className="absolute"
           style={{
-            top: "8%", left: "50%", width: 620, height: 260, transform: "translateX(-50%)",
+            top: "20%", left: "50%", width: "78%", height: "50%", transform: "translateX(-50%)",
             background:
-              "radial-gradient(ellipse at center, rgba(157,202,121,0.18) 0%, rgba(157,202,121,0.05) 50%, rgba(157,202,121,0) 78%)",
-            filter: "blur(16px)",
+              "radial-gradient(ellipse at center, rgba(157,202,121,0.16) 0%, rgba(157,202,121,0.04) 55%, rgba(157,202,121,0) 80%)",
+            filter: "blur(20px)",
           }}
         />
       </div>
@@ -468,21 +468,21 @@ function AcademiaLideresParallax() {
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div
           className="absolute"
-          style={{ top: "6%", left: "5%", display: "flex", alignItems: "center", gap: 10 }}
+          style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}
         >
-          <div style={{ width: 56, height: 1, background: "#9DCA79" }} />
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
           <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>
-            FORJA · ESCOLA DE COMANDO
+            FORJA · ESCOLA
           </div>
         </div>
         <div
           className="absolute"
-          style={{ top: "6%", right: "5%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
+          style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}
         >
           <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>
-            PRODUTO · 05/10
+            05/10
           </div>
-          <div style={{ width: 110, height: 1, background: "rgba(255,255,255,0.55)" }} />
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
         </div>
       </div>
     </div>
