@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
@@ -14,7 +15,129 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="eyebrow">{children}</div>;
 }
 
-/* ==================== SLIDE 01 — CAPA ==================== */
+/* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
+function LogoAnatomyParallax() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [p, setP] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setP({ x: nx, y: ny }));
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const layer = (depth: number): React.CSSProperties => ({
+    transform: `translate3d(${p.x * depth}px, ${p.y * depth}px, 0)`,
+    transition: "transform 600ms cubic-bezier(0.22, 1, 0.36, 1)",
+    willChange: "transform",
+  });
+
+  const mono = "font-mono text-[10px] tracking-[0.3em] uppercase";
+
+  return (
+    <div ref={ref} aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+      {/* Layer 1 — grade muito sutil */}
+      <div className="absolute inset-0 opacity-[0.06]" style={layer(8)}>
+        <div className="absolute inset-0" style={{
+          backgroundImage:
+            "linear-gradient(to right, var(--silver) 1px, transparent 1px), linear-gradient(to bottom, var(--silver) 1px, transparent 1px)",
+          backgroundSize: "120px 120px",
+        }} />
+      </div>
+
+      {/* Layer 2 — Wordmark NEXUS gigante */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(28)}>
+        <div className="relative">
+          <div className="absolute -left-[34px] top-[14px] bottom-[34px] w-[3px] bg-[var(--green)] opacity-70" />
+          <div
+            className="font-display font-extralight leading-none text-[var(--white-warm)]/[0.08]"
+            style={{ fontSize: "520px", letterSpacing: "-0.025em" }}
+          >
+            NEXUS
+          </div>
+          <div className="absolute -left-[34px] -bottom-[14px] right-[20%] flex items-center gap-[1px]">
+            <div className="h-[3px] flex-1 bg-[var(--green)] opacity-70" />
+            <div className="h-[3px] w-[30%] bg-[var(--silver)] opacity-40" />
+          </div>
+          <div className={`${mono} mt-6 ml-1 text-[var(--silver-dark)]/60`} style={{ letterSpacing: "0.35em", fontSize: "22px" }}>
+            NOSSO JEITO DE SER
+          </div>
+        </div>
+      </div>
+
+      {/* Layer 3 — anotações tipográficas */}
+      <div className="absolute inset-0" style={layer(46)}>
+        <div className="absolute" style={{ top: "20%", left: "18%" }}>
+          <div className="flex items-center gap-3">
+            <div className="h-[1px] w-[90px] bg-[var(--green)]/50" />
+            <div className={`${mono} text-[var(--green)]/70`}>Barra de chegada · Verde Newe</div>
+          </div>
+        </div>
+        <div className="absolute" style={{ top: "34%", right: "10%" }}>
+          <div className="flex items-center gap-3 justify-end">
+            <div className={`${mono} text-[var(--green)]/70`}>Plus Jakarta Sans 200 · −0.025em</div>
+            <div className="h-[1px] w-[110px] bg-[var(--green)]/50" />
+          </div>
+        </div>
+        <div className="absolute" style={{ bottom: "32%", right: "14%" }}>
+          <div className="flex items-center gap-3 justify-end">
+            <div className={`${mono} text-[var(--green)]/70`}>Space Mono · 0.3em · Verde Newe</div>
+            <div className="h-[1px] w-[80px] bg-[var(--green)]/50" />
+          </div>
+        </div>
+        <div className="absolute" style={{ bottom: "22%", right: "8%" }}>
+          <div className="flex items-center gap-3 justify-end">
+            <div className={`${mono} text-[var(--silver)]/60`}>Régua de chegada · Verde + Prata</div>
+            <div className="h-[1px] w-[140px]" style={{ background: "linear-gradient(to right, var(--green), var(--silver))", opacity: 0.55 }} />
+          </div>
+        </div>
+        <div className="absolute" style={{ bottom: "18%", left: "10%" }}>
+          <div className="flex items-center gap-3">
+            <div className="w-[10px] h-[10px] border border-[var(--green)]/60" />
+            <div className={`${mono} text-[var(--silver-dark)]/70`}>Anatomia do símbolo</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Layer 4 — cruzes de medida */}
+      <div className="absolute inset-0" style={layer(70)}>
+        {[
+          { t: "12%", l: "12%" },
+          { t: "16%", l: "78%" },
+          { t: "72%", l: "20%" },
+          { t: "78%", l: "84%" },
+          { t: "44%", l: "6%" },
+        ].map((s, i) => (
+          <div key={i} className="absolute" style={{ top: s.t, left: s.l }}>
+            <div className="relative w-[14px] h-[14px]">
+              <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[var(--green)]/60" />
+              <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[var(--green)]/60" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Vinheta */}
+      <div className="absolute inset-0" style={{
+        background:
+          "radial-gradient(ellipse at 28% 50%, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
+      }} />
+    </div>
+  );
+}
+
 function Slide01() {
   const stats = [
     { value: "10", label: "PRODUTOS DIGITAIS" },
@@ -24,24 +147,9 @@ function Slide01() {
   ];
   return (
     <div className="relative w-full h-full bg-[var(--black)] overflow-hidden">
-      {/* ghost text */}
-      <div
-        aria-hidden
-        className="absolute right-[-40px] top-1/2 -translate-y-1/2 font-display font-extralight select-none pointer-events-none"
-        style={{
-          fontSize: "280px",
-          transform: "translateY(-50%) rotate(90deg)",
-          transformOrigin: "center",
-          color: "transparent",
-          WebkitTextStroke: "1px rgba(157,202,121,0.05)",
-          letterSpacing: "-0.04em",
-          lineHeight: 1,
-        }}
-      >
-        NEXUS
-      </div>
+      <LogoAnatomyParallax />
 
-      <div className="slide-content active relative h-full px-[80px] flex flex-col justify-center max-w-[1100px]">
+      <div className="slide-content active relative h-full px-[80px] flex flex-col justify-center max-w-[1100px] z-10">
         <div className="w-[2px] h-[60px] bg-[var(--green)] mb-8" />
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--green)] mb-10">
           SISTEMA OPERACIONAL DA CULTURA · 5 MÓDULOS · 10 PRODUTOS
