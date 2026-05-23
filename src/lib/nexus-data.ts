@@ -2,6 +2,7 @@ export interface Product {
   n: string; // "01"
   module: string;
   moduleN: string; // "01"
+  moduleSlug: "cultura" | "pessoas" | "conhecimento" | "comunidade" | "governanca";
   name: string;
   alt: string;
   concept: string;
@@ -14,11 +15,23 @@ export interface Product {
   nexus: string;
   savings: string;
   savingsValue: number; // for bar proportion (in k)
+  image: string;
+  caption: string;
 }
+
+export const FALLBACK_IMAGES: Record<Product["moduleSlug"], string> = {
+  cultura: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=1400&q=80",
+  pessoas: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=1400&q=80",
+  conhecimento: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80",
+  comunidade: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80",
+  governanca: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80",
+};
 
 export const products: Product[] = [
   {
     n: "01", moduleN: "01", module: "Cultura",
+    moduleSlug: "cultura", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Cultura que se escreve para ser vivida",
     name: "Nosso Jeito de Ser",
     alt: "CODEX / MANIFESTO VIVO",
     concept: "Hub interativo de identidade cultural — propósito, valores e manifesto do grupo. Não é PDF: é experiência navegável, pesquisável e viva, acessível a qualquer colaborador a qualquer tempo.",
@@ -31,6 +44,8 @@ export const products: Product[] = [
   },
   {
     n: "02", moduleN: "02", module: "Pessoas",
+    moduleSlug: "pessoas", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "O primeiro dia é o único dia em que tudo é possível",
     name: "All Aboard",
     alt: "RITO DE CHEGADA / PORTAL DE PASSAGEM",
     concept: "Plataforma editorial de onboarding — jornada imersiva para novos colaboradores com checklist cultural, narrativa de boas-vindas e apresentação do ecossistema Newe.",
@@ -43,6 +58,8 @@ export const products: Product[] = [
   },
   {
     n: "03", moduleN: "02", module: "Pessoas",
+    moduleSlug: "pessoas", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Merecimento que se vê, não que se interpreta",
     name: "PAR 2026",
     alt: "MOTOR DE MERECIMENTO / REMUNERAÇÃO TRANSPARENTE",
     concept: "Plataforma executiva de gestão do Programa de Participação Anual nos Resultados — acompanhamento de metas, indicadores e cálculo de PLR com auditabilidade e transparência.",
@@ -55,6 +72,8 @@ export const products: Product[] = [
   },
   {
     n: "04", moduleN: "02", module: "Pessoas",
+    moduleSlug: "pessoas", image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Decidir bem é uma disciplina, não um talento",
     name: "Decidir com Intenção",
     alt: "MESA DE DECISÃO / AGENCY OS",
     concept: "Sistema de inteligência decisória para seleção de fornecedores estratégicos — scorecards ponderados por estratégia, custo, capacidade e risco.",
@@ -67,6 +86,8 @@ export const products: Product[] = [
   },
   {
     n: "05", moduleN: "03", module: "Conhecimento",
+    moduleSlug: "conhecimento", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Líderes não se encontram. São forjados.",
     name: "Academia de Líderes Newe",
     alt: "FORJA / ESCOLA DE COMANDO",
     concept: "Sistema editorial de trilhas de desenvolvimento de liderança alinhadas à cultura Newe e à visão do Urbanismo Integrativo — conteúdos curados e jornadas de capacitação proprietárias.",
@@ -79,6 +100,8 @@ export const products: Product[] = [
   },
   {
     n: "06", moduleN: "03", module: "Conhecimento",
+    moduleSlug: "conhecimento", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Vender o modo de habitar, não o metro quadrado",
     name: "Academia de Vendas Newe",
     alt: "ESCOLA DO COMPRADOR / CONSULTORES DE OBRA",
     concept: "Plataforma de formação editorial para consultores de imóveis de alto padrão — método, argumentação de valor, leitura de urbanismo e curadoria sob o sistema Newe.",
@@ -91,6 +114,8 @@ export const products: Product[] = [
   },
   {
     n: "07", moduleN: "04", module: "Comunidade",
+    moduleSlug: "comunidade", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Uma empresa são as pessoas que ela consegue manter próximas",
     name: "HYNstaNewe",
     alt: "ALMANAQUE VIVO / REDE DE GENTE",
     concept: "Rede social interna do grupo — perfis de pessoas, histórias, conexões e pertencimento. A inteligência relacional do grupo materializada em produto digital próprio.",
@@ -103,6 +128,8 @@ export const products: Product[] = [
   },
   {
     n: "08", moduleN: "04", module: "Comunidade",
+    moduleSlug: "comunidade", image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Toda estrutura é um argumento sobre como as pessoas devem se relacionar",
     name: "Habitar a Estrutura",
     alt: "TOPOGRAFIA HUMANA / MAPA DE PODER",
     concept: "Organograma executivo interativo e animado — não apenas hierarquia, mas arquitetura de responsabilidade e narrativa institucional das lideranças do grupo.",
@@ -115,6 +142,8 @@ export const products: Product[] = [
   },
   {
     n: "09", moduleN: "05", module: "Governança",
+    moduleSlug: "governanca", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "Marca não é logo. É a gramática de tudo que você faz.",
     name: "Plataforma de Marca",
     alt: "GRAMÁTICA VIVA / CONSTITUIÇÃO DA MARCA",
     concept: "Brand Book digital e interativo — metodologia É, FAZ E FALA, tokens de design, identidade visual, arquitetura verbal e toolkit estratégico para uso interno e externo.",
@@ -127,6 +156,8 @@ export const products: Product[] = [
   },
   {
     n: "10", moduleN: "05", module: "Governança",
+    moduleSlug: "governanca", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1400&q=80&fit=crop&crop=entropy",
+    caption: "O que não está escrito não existe. O que não tem endereço se perde.",
     name: "HUB Hyndra",
     alt: "CONSTITUIÇÃO DO GRUPO / REPOSITÓRIO VIVO",
     concept: "Repositório institucional de políticas, SOPs, fluxogramas e documentos corporativos com versionamento, fluxo de aprovação e auditabilidade — fonte única e viva da governança.",

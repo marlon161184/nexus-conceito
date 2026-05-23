@@ -116,3 +116,22 @@ body {
 /* Scrollbar hide for any internal tables */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* Editorial photo on product slides */
+.slide-foto img {
+  filter: grayscale(30%) brightness(0.55) contrast(1.15);
+  will-change: transform, filter;
+}
+@keyframes slide-foto-enter {
+  from {
+    transform: scale(1.08);
+    filter: grayscale(30%) brightness(0.35) contrast(1.1);
+  }
+  to {
+    transform: scale(1);
+    filter: grayscale(30%) brightness(0.55) contrast(1.15);
+  }
+}
+.slide-frame.is-active .slide-foto img {
+  animation: slide-foto-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}

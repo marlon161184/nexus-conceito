@@ -1,4 +1,4 @@
-import { products, altNames, modules, type Product } from "@/lib/nexus-data";
+import { products, altNames, modules, FALLBACK_IMAGES, type Product } from "@/lib/nexus-data";
 
 const FOOTER = "Hyndra | Newe Urbanismo Integrativo · Conselho · Maio 2026";
 
@@ -166,100 +166,142 @@ const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
 function ProductSlide({ p, idx }: { p: Product; idx: number }) {
   const pct = (p.savingsValue / MAX_SAVING) * 100;
   return (
-    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[60px] flex flex-col">
-      <div className="slide-content active flex-1 flex flex-col gap-8">
-        <Eyebrow>
-          MÓDULO {p.moduleN} · {p.module.toUpperCase()} · PRODUTO {String(idx + 1).padStart(2, "0")}/10
-        </Eyebrow>
+    <div className="relative w-full h-full bg-[var(--black)] flex flex-col overflow-hidden">
+      {/* Main 55 / 45 grid */}
+      <div className="flex-1 min-h-0 grid grid-cols-[55%_45%] relative">
+        {/* LEFT — textual content */}
+        <div className="slide-content active relative px-[80px] py-[60px] flex flex-col gap-7 z-10">
+          <Eyebrow>
+            MÓDULO {p.moduleN} · {p.module.toUpperCase()} · PRODUTO {String(idx + 1).padStart(2, "0")}/10
+          </Eyebrow>
 
-        <div className="grid grid-cols-[40%_60%] gap-12 flex-1 min-h-0">
-          {/* LEFT */}
-          <div className="flex flex-col justify-between">
-            <div>
-              <h2
-                className="font-display font-extralight text-[var(--white-warm)] leading-[1.02]"
-                style={{ fontSize: "clamp(36px, 4vw, 56px)", letterSpacing: "-0.03em" }}
-              >
-                {p.name}
-              </h2>
-              <div className="mt-5 font-mono text-[10px] text-[var(--green)] uppercase tracking-[0.2em]">
-                ALT: {p.alt}
-              </div>
-            </div>
-
-            <div
-              className="p-6 mt-8"
-              style={{
-                background: "rgba(157,202,121,0.06)",
-                border: "1px solid rgba(157,202,121,0.2)",
-              }}
+          <div>
+            <h2
+              className="font-display font-extralight text-[var(--white-warm)] leading-[1.02]"
+              style={{ fontSize: "clamp(34px, 3.6vw, 52px)", letterSpacing: "-0.03em" }}
             >
-              <div className="font-mono text-[8px] text-[var(--green)] uppercase tracking-[0.2em]">
-                TENSÃO CULTURAL
-              </div>
-              <p className="mt-3 font-serif italic text-[18px] text-[var(--white-warm)] leading-[1.4]">
-                {p.tension}
-              </p>
+              {p.name}
+            </h2>
+            <div className="mt-4 font-mono text-[10px] text-[var(--green)] uppercase tracking-[0.2em]">
+              ALT: {p.alt}
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="flex flex-col gap-6">
-            <div className="bg-[var(--graphite-deep)] p-7 flex-1">
+          <div
+            className="p-5"
+            style={{
+              background: "rgba(157,202,121,0.06)",
+              border: "1px solid rgba(157,202,121,0.2)",
+            }}
+          >
+            <div className="font-mono text-[8px] text-[var(--green)] uppercase tracking-[0.2em]">
+              TENSÃO CULTURAL
+            </div>
+            <p className="mt-2 font-serif italic text-[16px] text-[var(--white-warm)] leading-[1.4]">
+              {p.tension}
+            </p>
+          </div>
+
+          <div className="bg-[var(--graphite-deep)] p-6 flex-1 min-h-0">
+            {[
+              { l: "CONCEITO", v: p.concept },
+              { l: "OBJETIVO", v: p.objective },
+              { l: "JUSTIFICATIVA", v: p.rationale },
+            ].map((f, i, arr) => (
+              <div
+                key={f.l}
+                className={`py-3 ${i < arr.length - 1 ? "border-b border-[var(--graphite)]" : ""} ${i === 0 ? "pt-0" : ""}`}
+              >
+                <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
+                  {f.l}
+                </div>
+                <p className="mt-1.5 text-[12.5px] text-[var(--silver)] leading-[1.55] font-light">{f.v}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-[var(--graphite-deep)] p-5">
+            <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
+              EQUIVALENTE DE MERCADO
+            </div>
+            <div className="mt-2 font-display text-[13px] text-[var(--white-warm)]">{p.market}</div>
+            <div className="mt-4 grid grid-cols-3 gap-4">
               {[
-                { l: "CONCEITO", v: p.concept },
-                { l: "OBJETIVO", v: p.objective },
-                { l: "JUSTIFICATIVA", v: p.rationale },
-              ].map((f, i, arr) => (
-                <div
-                  key={f.l}
-                  className={`py-4 ${i < arr.length - 1 ? "border-b border-[var(--graphite)]" : ""} ${i === 0 ? "pt-0" : ""}`}
-                >
+                { l: "IMPLANT.", v: p.implant },
+                { l: "MENSAL.", v: p.monthly },
+                { l: "NEXUS", v: p.nexus },
+              ].map((c) => (
+                <div key={c.l}>
                   <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
-                    {f.l}
+                    {c.l}
                   </div>
-                  <p className="mt-2 text-[13px] text-[var(--silver)] leading-[1.6] font-light">{f.v}</p>
+                  <div className="mt-1 font-mono text-[11px] text-[var(--white-warm)]">{c.v}</div>
                 </div>
               ))}
-            </div>
-
-            <div className="bg-[var(--graphite-deep)] p-6">
-              <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
-                EQUIVALENTE DE MERCADO
-              </div>
-              <div className="mt-2 font-display text-[14px] text-[var(--white-warm)]">{p.market}</div>
-              <div className="mt-5 grid grid-cols-3 gap-4">
-                {[
-                  { l: "IMPLANT.", v: p.implant },
-                  { l: "MENSAL.", v: p.monthly },
-                  { l: "NEXUS", v: p.nexus },
-                ].map((c) => (
-                  <div key={c.l}>
-                    <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.18em]">
-                      {c.l}
-                    </div>
-                    <div className="mt-1 font-mono text-[11px] text-[var(--white-warm)]">{c.v}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom savings bar */}
-        <div className="bg-[var(--graphite-deep)] -mx-[80px] px-[80px] py-5 flex items-center gap-8">
-          <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.2em] whitespace-nowrap">
-            ECONOMIA ESTIMADA · 2 ANOS VS. MERCADO
+        {/* RIGHT — editorial photo */}
+        <div className="slide-foto relative overflow-hidden">
+          <img
+            src={p.image}
+            alt=""
+            data-modulo={p.moduleSlug}
+            onError={(e) => {
+              const el = e.currentTarget;
+              const fb = FALLBACK_IMAGES[p.moduleSlug];
+              if (fb && el.src !== fb) el.src = fb;
+            }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* horizontal blend into text */}
+          <div
+            className="absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(10,10,10,1) 0%, rgba(10,10,10,0.85) 20%, rgba(10,10,10,0.3) 60%, rgba(10,10,10,0) 100%)",
+            }}
+          />
+          {/* vertical edges */}
+          <div
+            className="absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.9) 100%)",
+            }}
+          />
+          <div
+            className="absolute z-[2] font-serif italic"
+            style={{
+              bottom: "28px",
+              right: "28px",
+              fontSize: "12px",
+              color: "rgba(247,246,244,0.5)",
+              letterSpacing: "0.02em",
+              maxWidth: "220px",
+              textAlign: "right",
+              lineHeight: 1.5,
+            }}
+          >
+            {p.caption}
           </div>
-          <div className="flex-1 h-[3px] bg-[var(--graphite)] relative overflow-hidden">
-            <div
-              className="absolute inset-y-0 left-0 bg-[var(--green)]"
-              style={{ width: `${pct}%`, transition: "width 600ms ease" }}
-            />
-          </div>
-          <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
-            {p.savings}
-          </div>
+        </div>
+      </div>
+
+      {/* Bottom savings bar — full width */}
+      <div className="bg-[var(--graphite-deep)] px-[80px] py-4 flex items-center gap-8 border-t border-[var(--graphite)] relative z-10">
+        <div className="font-mono text-[8px] text-[var(--silver-dark)] uppercase tracking-[0.2em] whitespace-nowrap">
+          ECONOMIA ESTIMADA · 2 ANOS VS. MERCADO
+        </div>
+        <div className="flex-1 h-[3px] bg-[var(--graphite)] relative overflow-hidden">
+          <div
+            className="absolute inset-y-0 left-0 bg-[var(--green)]"
+            style={{ width: `${pct}%`, transition: "width 600ms ease" }}
+          />
+        </div>
+        <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
+          {p.savings}
         </div>
       </div>
     </div>
