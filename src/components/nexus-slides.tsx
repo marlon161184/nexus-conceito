@@ -156,13 +156,13 @@ function HabitarEstruturaParallax() {
     <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0" style={{ ...layer(8), inset: "-20px" }}>
         <video
-          src="https://res.cloudinary.com/dhhznkel5/video/upload/org_e_design_vhiyfo.mp4"
+          src="https://res.cloudinary.com/dhhznkel5/video/upload/org_e_design_pshgta.mp4"
           autoPlay loop muted playsInline
           className="absolute inset-0 w-full h-full"
-          style={{ objectFit: "cover", filter: "grayscale(0.2) brightness(0.78) contrast(1.06)" }}
+          style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.45)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.25)" }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
       }} />
