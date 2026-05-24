@@ -1413,33 +1413,152 @@ function Slide14() {
 }
 
 /* ==================== SLIDE 15 — NOMES ALT ==================== */
+const BRAND_SHEETS: Record<string, {
+  tagline: string;
+  anchor: string;
+  palette: [string, string, string, string];
+  voz: string;
+  palavras: [string, string, string];
+  ref: string;
+}> = {
+  CODEX: { tagline: "A lei que nos forma", anchor: "#C9B46E", palette: ["#1A1A2E", "#C9B46E", "#2D2D4A", "#F0EAD6"], voz: "Declarativa. Sem eufemismos. Tom de carta magna.", palavras: ["FUNDANTE", "SOBERANO", "INSCRITO"], ref: "The Economist · Constituição Federal" },
+  "RITO DE CHEGADA": { tagline: "Entrada que marca", anchor: "#8FBC8F", palette: ["#2C5F2E", "#8FBC8F", "#F4F0E6", "#1C3A1E"], voz: "Acolhedora mas não infantil. Guia experiente.", palavras: ["TRAVESSIA", "LIMIAR", "PERTENCIMENTO"], ref: "National Geographic · Cerimônia minimalista" },
+  "MOTOR DE MERECIMENTO": { tagline: "Equidade como sistema", anchor: "#FFD700", palette: ["#8B1A1A", "#FFD700", "#2A2A2A", "#F5F5F0"], voz: "Direta. Movida por critério. Tom de árbitro justo.", palavras: ["MÉRITO", "CRITÉRIO", "IMPACTO"], ref: "Bloomberg Terminal · Alto rendimento" },
+  "MESA DE DECISÃO": { tagline: "Poder com clareza", anchor: "#778DA9", palette: ["#0D1B2A", "#E8D5B7", "#415A77", "#778DA9"], voz: "Contida. Precisa. Brief executivo de alto nível.", palavras: ["DELIBERAÇÃO", "PROTOCOLO", "CONSEQUÊNCIA"], ref: "McKinsey deck · Sala de conselho" },
+  FORJA: { tagline: "Transformação, não formação", anchor: "#FF8C42", palette: ["#3D1C02", "#FF8C42", "#F5C518", "#1A0A00"], voz: "Intensa. Mentor que não aceita mediocridade.", palavras: ["PRESSÃO", "TÊMPERA", "TRANSFORMAÇÃO"], ref: "Nike Training · Industrial premium" },
+  "ESCOLA DO COMPRADOR": { tagline: "Entender antes de vender", anchor: "#BDC3C7", palette: ["#2C3E50", "#BDC3C7", "#E8E8E8", "#1A252F"], voz: "Sofisticada. Observacional. Curador de experiências.", palavras: ["PERCEPÇÃO", "DESEJO", "CURADORIA"], ref: "Monocle Magazine · Sommelier de luxo" },
+  "ALMANAQUE VIVO": { tagline: "Memória que respira", anchor: "#9B88D4", palette: ["#4A4A8A", "#E8E4FF", "#9B88D4", "#1E1E3F"], voz: "Reflexiva. Tom de editor de arquivo cultural.", palavras: ["REGISTRO", "ACERVO", "CONTINUIDADE"], ref: "Criterion Collection · Anuário centenário" },
+  "TOPOGRAFIA HUMANA": { tagline: "Organograma como território", anchor: "#95D5B2", palette: ["#1B4332", "#95D5B2", "#D8F3DC", "#081C15"], voz: "Cartográfica. Descritiva. Guia de terreno.", palavras: ["TERRITÓRIO", "NÓ", "ADJACÊNCIA"], ref: "Infografia NYT · Cartografia arquitetural" },
+  "GRAMÁTICA VIVA": { tagline: "Marca como língua", anchor: "#E8B4E8", palette: ["#5C1A5C", "#E8B4E8", "#B56AB5", "#2E002E"], voz: "Prescritiva mas elegante. Manual de estilo de luxo.", palavras: ["VOCABULÁRIO", "SINTAXE", "VOZ"], ref: "Pentagram · The Guardian style guide" },
+  "CONSTITUIÇÃO DO GRUPO": { tagline: "Carta magna institucional", anchor: "#C8A951", palette: ["#1C1C1C", "#C8A951", "#3D3D3D", "#F8F5EE"], voz: "Solene. Definitiva. Não admite ambiguidade.", palavras: ["ESTATUTO", "VIGÊNCIA", "MANDATO"], ref: "The Economist · Arquivo do STF" },
+};
+
+function BrandSectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="font-mono uppercase"
+      style={{ fontSize: 8, letterSpacing: "0.15em", color: "#6B8C3E" }}
+    >
+      {children}
+    </div>
+  );
+}
+
 function Slide15() {
   return (
-    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[60px] flex flex-col overflow-hidden">
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[50px] flex flex-col overflow-hidden">
       <div className="slide-content active flex-1 flex flex-col min-h-0">
         <Eyebrow>NOMES ALTERNATIVOS · PROVOCAÇÃO ESTRATÉGICA</Eyebrow>
         <h2
-          className="mt-5 font-display font-extralight text-[var(--white-warm)]"
-          style={{ fontSize: "clamp(34px, 3.5vw, 48px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+          className="mt-4 font-display font-extralight text-[var(--white-warm)]"
+          style={{ fontSize: "clamp(30px, 3vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
         >
           Nomes que incomodam bem.
         </h2>
-        <p className="mt-5 font-serif italic text-[18px] text-[var(--silver)] max-w-[700px] leading-[1.5]">
+        <p className="mt-3 font-serif italic text-[15px] text-[var(--silver)] max-w-[700px] leading-[1.45]">
           “Um nome estratégico não é apenas bonito — é uma declaração de intenção. As opções abaixo provocam se os nomes atuais comunicam o que cada produto faz.”
         </p>
 
-        <div className="mt-7 grid grid-cols-5 grid-rows-2 gap-4 flex-1 min-h-0">
-          {altNames.map((a) => (
-            <div key={a.current} className="bg-[var(--graphite-deep)] border border-[var(--graphite)] p-4 flex flex-col">
-              <div className="font-display font-light text-[13px] text-[var(--white-warm)] pb-2 border-b border-[var(--graphite)] leading-tight">
-                {a.current}
+        <div className="mt-5 grid grid-cols-5 grid-rows-2 gap-3 flex-1 min-h-0">
+          {altNames.map((a) => {
+            const sheet = BRAND_SHEETS[a.alt];
+            if (!sheet) return null;
+            const dividerStyle = { background: "rgba(255,255,255,0.06)" } as const;
+            return (
+              <div
+                key={a.current}
+                className="relative bg-[#1A1C14] border border-[var(--graphite)] flex flex-col overflow-hidden"
+                style={{ padding: "12px 11px 11px" }}
+              >
+                <div
+                  className="absolute top-0 left-0 right-0"
+                  style={{ height: 3, background: sheet.anchor }}
+                />
+
+                <div
+                  className="font-display font-light text-[var(--white-warm)] leading-tight"
+                  style={{ fontSize: 11, marginTop: 2 }}
+                >
+                  {a.current}
+                </div>
+
+                <div
+                  className="font-mono font-bold uppercase mt-1"
+                  style={{ fontSize: 12, letterSpacing: "0.08em", color: "#9DCA79", lineHeight: 1.15 }}
+                >
+                  {a.alt}
+                </div>
+
+                <div
+                  className="font-serif italic mt-1"
+                  style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.3 }}
+                >
+                  {sheet.tagline}
+                </div>
+
+                <p
+                  className="font-light mt-2"
+                  style={{ fontSize: 9.5, color: "rgba(255,255,255,0.55)", lineHeight: 1.45 }}
+                >
+                  {a.rationale}
+                </p>
+
+                <div className="h-px w-full my-2" style={dividerStyle} />
+
+                <BrandSectionLabel>PALETA</BrandSectionLabel>
+                <div className="flex items-center gap-1 mt-1">
+                  {sheet.palette.map((c, i) => (
+                    <span
+                      key={i}
+                      style={{ width: 10, height: 10, borderRadius: "50%", background: c, display: "inline-block" }}
+                    />
+                  ))}
+                </div>
+
+                <div className="h-px w-full my-2" style={dividerStyle} />
+
+                <BrandSectionLabel>VOZ</BrandSectionLabel>
+                <div
+                  className="font-serif italic mt-0.5"
+                  style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", lineHeight: 1.35 }}
+                >
+                  {sheet.voz}
+                </div>
+
+                <div className="h-px w-full my-2" style={dividerStyle} />
+
+                <div className="flex flex-wrap gap-1">
+                  {sheet.palavras.map((w) => (
+                    <span
+                      key={w}
+                      className="font-mono uppercase"
+                      style={{
+                        fontSize: 8,
+                        letterSpacing: "0.08em",
+                        border: `0.5px solid ${sheet.anchor}`,
+                        color: sheet.anchor,
+                        padding: "2px 5px",
+                        borderRadius: 0,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {w}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="h-px w-full my-2" style={dividerStyle} />
+
+                <BrandSectionLabel>REF</BrandSectionLabel>
+                <div
+                  className="font-mono mt-0.5"
+                  style={{ fontSize: 8.5, color: "rgba(255,255,255,0.32)", lineHeight: 1.3 }}
+                >
+                  {sheet.ref}
+                </div>
               </div>
-              <div className="mt-3 font-mono font-bold text-[12px] text-[var(--green)] uppercase tracking-[0.1em]">
-                {a.alt}
-              </div>
-              <p className="mt-3 font-light text-[11px] text-[var(--silver-dark)] leading-[1.5]">{a.rationale}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
