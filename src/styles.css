@@ -213,3 +213,50 @@ body {
   90%, 100% { opacity: 0; transform: scale(0.6); }
 }
 .al-spark { transform-origin: 50% 50%; transform-box: fill-box; animation: al-spark 7.2s ease-in-out infinite; will-change: transform, opacity; }
+
+/* STARRY SKY — twinkle sequencial */
+@keyframes starry-twinkle {
+  0%, 92%, 100% { opacity: 0.18; box-shadow: none; }
+  4% { opacity: 1; box-shadow: 0 0 6px 1px rgba(247,246,244,0.85); }
+  10% { opacity: 0.18; box-shadow: none; }
+}
+.starry-twinkle {
+  animation: starry-twinkle 6s ease-in-out infinite;
+  will-change: opacity, box-shadow;
+}
+
+/* BLUEPRINT — desenho contínuo dos traços */
+@keyframes bp-draw {
+  0% { stroke-dashoffset: var(--len, 800); opacity: 0; }
+  10% { opacity: 1; }
+  60%, 100% { stroke-dashoffset: 0; opacity: 1; }
+}
+.bp-draw {
+  stroke-dashoffset: 800;
+  animation: bp-draw 4.5s ease-out forwards;
+}
+
+/* NEXUS module icons — desenhar simultaneamente + brilho verde final */
+@keyframes nx-draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  10% { opacity: 1; }
+  70%, 100% { stroke-dashoffset: 0; opacity: 1; }
+}
+.nx-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: nx-draw 2.6s ease-out forwards;
+  animation-delay: 0.3s;
+}
+@keyframes nx-glow {
+  0%, 60% { filter: drop-shadow(0 0 0 rgba(157,202,121,0)); }
+  72% { filter: drop-shadow(0 0 14px rgba(157,202,121,1)) drop-shadow(0 0 28px rgba(157,202,121,0.8)); }
+  82% { filter: drop-shadow(0 0 4px rgba(157,202,121,0.5)); }
+  92% { filter: drop-shadow(0 0 18px rgba(157,202,121,1)) drop-shadow(0 0 36px rgba(157,202,121,0.9)); }
+  100% { filter: drop-shadow(0 0 6px rgba(157,202,121,0.6)); }
+}
+.nx-icon-glow {
+  animation: nx-glow 4.2s ease-in-out forwards;
+  animation-delay: 0.3s;
+  will-change: filter;
+}
