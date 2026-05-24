@@ -908,7 +908,55 @@ function Slide01() {
           className="font-display font-extralight text-[var(--white-warm)] leading-none"
           style={{ fontSize: "clamp(80px, 9vw, 120px)", letterSpacing: "-0.04em" }}
         >
-          NEXUS
+          <span
+            style={{
+              position: "relative",
+              display: "inline-flex",
+              fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
+              fontWeight: 200,
+              fontSize: "clamp(96px, 22vw, 360px)",
+              letterSpacing: "-0.04em",
+              lineHeight: 1,
+            }}
+          >
+            <span
+              className="nexus-bar"
+              style={{
+                position: "absolute",
+                left: "0.07em",
+                top: "0.16em",
+                height: "0.68em",
+                width: "0.05em",
+                backgroundColor: "#9DCA79",
+              }}
+            />
+            {["N", "E", "X", "U", "S"].map((ch, i) => (
+              <span
+                key={i}
+                className="nexus-letter"
+                style={{
+                  ["--i" as never]: i,
+                  color: ch === "X" ? "#9DCA79" : "#F7F6F4",
+                  display: "inline-block",
+                } as React.CSSProperties}
+              >
+                {ch}
+              </span>
+            ))}
+            <span
+              className="nexus-spark"
+              style={{
+                position: "absolute",
+                right: "-0.08em",
+                top: "0.18em",
+                width: "0.08em",
+                height: "0.08em",
+                borderRadius: "50%",
+                background: "#FFFFFF",
+                opacity: 0,
+              }}
+            />
+          </span>
         </h1>
         <div
           className="font-display font-extralight mt-6"
