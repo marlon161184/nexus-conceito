@@ -262,14 +262,15 @@ body {
 }
 
 /* NEXUS wordmark — barra verde, brilho sequencial nas letras, faísca final */
-@keyframes nexusBarPulse {
+@keyframes nexusBarGlow {
   0%   { box-shadow: 0 0 12px rgba(157,202,121,0.35); background-color: #7AAE58; }
   14%  { box-shadow: 0 0 34px rgba(157,202,121,0.95); background-color: #C8F09A; }
   28%  { box-shadow: 0 0 14px rgba(157,202,121,0.4);  background-color: #9DCA79; }
   100% { box-shadow: 0 0 12px rgba(157,202,121,0.35); background-color: #9DCA79; }
 }
 .nexus-bar {
-  animation: nexusBarPulse 5s ease-in-out infinite;
+  box-shadow: 0 0 18px rgba(157,202,121,0.55);
+  animation: nexusBarGlow 5s ease-in-out infinite;
   will-change: box-shadow, background-color;
 }
 
