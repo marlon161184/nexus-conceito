@@ -912,9 +912,9 @@ function Slide01() {
         </h1>
         <div
           className="font-display font-extralight mt-6"
-          style={{ fontSize: "clamp(28px, 3vw, 40px)", color: "var(--green)", letterSpacing: "-0.02em" }}
+          style={{ fontSize: "clamp(24px, 2.6vw, 34px)", color: "var(--green)", letterSpacing: "-0.02em" }}
         >
-          Não é um sistema de RH.
+          O Nexus não é uma plataforma.<br />É a prova de que a cultura pode ser arquitetada.
         </div>
 
         <div className="mt-16 pt-10 border-t border-[var(--graphite)] grid grid-cols-4 gap-8">
