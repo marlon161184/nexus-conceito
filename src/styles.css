@@ -302,6 +302,14 @@ body {
   100% { opacity: 0; }
 }
 .nexus-spark {
+  position: absolute;
+  right: -0.08em;
+  top: 0.18em;
+  width: 0.08em;
+  height: 0.08em;
+  border-radius: 50%;
+  background: #FFFFFF;
+  opacity: 0;
   animation: nexusSpark 5s ease-out infinite;
   animation-delay: 2.55s;
   will-change: opacity, transform, box-shadow;
