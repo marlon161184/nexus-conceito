@@ -904,22 +904,24 @@ function Slide01() {
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--green)] mb-10">
           SISTEMA OPERACIONAL DA CULTURA · 5 MÓDULOS · 10 PRODUTOS
         </div>
-        <h1
-          className="font-display font-extralight text-[var(--white-warm)] leading-none"
-          style={{ fontSize: "clamp(80px, 9vw, 120px)", letterSpacing: "-0.04em" }}
-        >
+        <h1 className="relative leading-none">
+          <span className="sr-only">Nexus</span>
           <span
+            aria-hidden
+            className="font-display inline-flex items-stretch leading-[0.85] nexus-wordmark"
             style={{
-              position: "relative",
-              display: "inline-flex",
               fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
               fontWeight: 200,
               fontSize: "clamp(96px, 22vw, 360px)",
               letterSpacing: "-0.04em",
-              lineHeight: 1,
+              color: "#F7F6F4",
+              textShadow: "0 0 80px rgba(157,202,121,0.15)",
+              position: "relative",
+              paddingLeft: "0",
             }}
           >
             <span
+              aria-hidden
               className="nexus-bar"
               style={{
                 position: "absolute",
@@ -930,32 +932,12 @@ function Slide01() {
                 backgroundColor: "#9DCA79",
               }}
             />
-            {["N", "E", "X", "U", "S"].map((ch, i) => (
-              <span
-                key={i}
-                className="nexus-letter"
-                style={{
-                  ["--i" as never]: i,
-                  color: ch === "X" ? "#9DCA79" : "#F7F6F4",
-                  display: "inline-block",
-                } as React.CSSProperties}
-              >
-                {ch}
-              </span>
-            ))}
-            <span
-              className="nexus-spark"
-              style={{
-                position: "absolute",
-                right: "-0.08em",
-                top: "0.18em",
-                width: "0.08em",
-                height: "0.08em",
-                borderRadius: "50%",
-                background: "#FFFFFF",
-                opacity: 0,
-              }}
-            />
+            <span className="nexus-letter" style={{ ["--i" as never]: 0 } as React.CSSProperties}>N</span>
+            <span className="nexus-letter" style={{ ["--i" as never]: 1 } as React.CSSProperties}>E</span>
+            <span className="nexus-letter" style={{ ["--i" as never]: 2, color: "#9DCA79" } as React.CSSProperties}>X</span>
+            <span className="nexus-letter" style={{ ["--i" as never]: 3 } as React.CSSProperties}>U</span>
+            <span className="nexus-letter" style={{ ["--i" as never]: 4 } as React.CSSProperties}>S</span>
+            <span className="nexus-spark" aria-hidden />
           </span>
         </h1>
         <div
