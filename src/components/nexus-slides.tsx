@@ -1121,6 +1121,18 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
             <PAR2026Parallax />
           ) : p.name === "Academia de Líderes Newe" ? (
             <AcademiaLideresParallax />
+          ) : p.name === "Nosso Jeito de Ser" ? (
+            <StarrySkyParallax />
+          ) : p.name === "Academia de Vendas Newe" ? (
+            <AcademiaVendasParallax />
+          ) : p.name === "HYNstaNewe" ? (
+            <HynstaNeweParallax />
+          ) : p.name === "Habitar a Estrutura" ? (
+            <HabitarEstruturaParallax />
+          ) : p.name === "Plataforma de Marca" ? (
+            <PlataformaMarcaParallax />
+          ) : p.name === "HUB Hyndra" ? (
+            <HubHyndraParallax />
           ) : (
 
 
