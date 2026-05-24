@@ -6,6 +6,243 @@ import par2026Type from "@/assets/par-2026-type.jpg";
 import hyndraLogo from "@/assets/hyndra-logo.png";
 import academiaLideresLogo from "@/assets/academia-lideres-logo.png";
 import academiaLideresHero from "@/assets/academia-lideres-hero.jpg";
+import academiaVendasHero from "@/assets/academia-vendas-hero.jpg";
+import academiaVendasLogo from "@/assets/academia-vendas-logo.png";
+import hynstaNeweLogo from "@/assets/hynstanewe-logo.png";
+import miniBrandbook from "@/assets/mini-brandbook.jpg";
+import hubHyndraHero from "@/assets/hub-hyndra-hero.jpg";
+
+/* ==================== Shared parallax hook ==================== */
+function useParallax() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [auto, setAuto] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setMouse({ x: nx, y: ny }));
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => { window.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
+  }, []);
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const e = (t - start) / 1000;
+      setAuto({ x: Math.sin(e * 0.18) * 0.18, y: Math.cos(e * 0.14) * 0.12 });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  const layer = (depth: number): React.CSSProperties => ({
+    transform: `translate3d(${(mouse.x + auto.x) * depth}px, ${(mouse.y + auto.y) * depth}px, 0)`,
+    willChange: "transform",
+  });
+  return { ref, layer };
+}
+
+/* ==================== STARRY SKY — Nosso Jeito de Ser (slide 4) ==================== */
+function StarrySkyParallax() {
+  const { ref, layer } = useParallax();
+  const stars = Array.from({ length: 90 }).map((_, i) => {
+    const r = (n: number) => ((Math.sin(i * 9.13 + n * 3.7) + 1) / 2);
+    return { x: r(1) * 100, y: r(2) * 100, s: 0.6 + r(3) * 2.4, d: r(4) * 7 };
+  });
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "radial-gradient(ellipse at 50% 40%, #14182a 0%, #0a0a0a 75%)" }}>
+      <div className="absolute inset-0" style={layer(8)}>
+        {stars.map((st, i) => (
+          <div key={i} className="starry-twinkle absolute rounded-full"
+            style={{ top: `${st.y}%`, left: `${st.x}%`, width: st.s, height: st.s, background: "#F7F6F4", animationDelay: `${st.d}s` }} />
+        ))}
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>CODEX · MANIFESTO</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>01/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== ACADEMIA DE VENDAS — slide 9 ==================== */
+function AcademiaVendasParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute inset-0" style={{ ...layer(12), inset: "-30px" }}>
+        <img src={academiaVendasHero} alt="" className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "grayscale(0.25) brightness(0.7) contrast(1.08) saturate(0.95)" }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.45) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+      }} />
+      <div className="absolute" style={{ ...layer(44), bottom: "7%", right: "7%", width: 170 }}>
+        <img src={academiaVendasLogo} alt="Academia de Vendas Newe" className="w-full h-auto"
+          style={{ filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.7))" }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>ESCOLA DO COMPRADOR</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>06/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== HYNstaNewe — slide 10 ==================== */
+function HynstaNeweParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden" style={{ background: "radial-gradient(ellipse at 60% 40%, #1a1018 0%, #0a0a0a 75%)" }}>
+      <div className="absolute pointer-events-none" style={{ ...layer(14), top: "10%", left: "50%", width: "80%", height: "70%", transform: "translateX(-50%)" }}>
+        <div className="w-full h-full" style={{
+          background: "radial-gradient(ellipse at center, rgba(225,48,108,0.32) 0%, rgba(247,119,55,0.2) 35%, rgba(157,202,121,0.08) 65%, rgba(10,10,10,0) 80%)",
+          filter: "blur(40px)",
+        }} />
+      </div>
+      <div className="absolute" style={{ ...layer(28), top: "50%", left: "50%", width: "75%", transform: "translate(-50%, -50%)" }}>
+        <img src={hynstaNeweLogo} alt="HYNstaNewe" className="w-full h-auto"
+          style={{ filter: "drop-shadow(0 6px 30px rgba(0,0,0,0.7))", mixBlendMode: "screen", opacity: 0.96 }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={layer(52)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>ALMANAQUE VIVO</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>07/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== HABITAR A ESTRUTURA — slide 11 (vídeo loop) ==================== */
+function HabitarEstruturaParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute inset-0" style={{ ...layer(8), inset: "-20px" }}>
+        <video
+          src="https://res.cloudinary.com/dhhznkel5/video/upload/org_e_design_vhiyfo.mp4"
+          autoPlay loop muted playsInline
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: "cover", filter: "grayscale(0.2) brightness(0.78) contrast(1.06)" }}
+        />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.45)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>TOPOGRAFIA HUMANA</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>08/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== PLATAFORMA DE MARCA — slide 12 ==================== */
+function PlataformaMarcaParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute inset-0" style={{ ...layer(10), inset: "-20px" }}>
+        <img src={miniBrandbook} alt="" className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.88) contrast(1.05)" }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>GRAMÁTICA VIVA</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>09/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ==================== HUB HYNDRA — slide 13 ==================== */
+function HubHyndraParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute inset-0" style={{ ...layer(10), inset: "-20px" }}>
+        <img src={hubHyndraHero} alt="" className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.78) contrast(1.08)" }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+      }} />
+      <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
+        <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ width: 40, height: 1, background: "#9DCA79" }} />
+          <div className="font-mono uppercase" style={{ fontSize: 9, letterSpacing: "0.3em", color: "#9DCA79" }}>CONSTITUIÇÃO DO GRUPO</div>
+        </div>
+        <div className="absolute" style={{ top: "6%", right: "8%", display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+          <div className="font-mono uppercase" style={{ fontSize: 8, letterSpacing: "0.3em", color: "rgba(255,255,255,0.85)" }}>10/10</div>
+          <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.55)" }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
 
 
 /* ==================== ALL ABOARD — PARALLAX DE CHEGADA ==================== */
@@ -752,10 +989,113 @@ function Slide02() {
 }
 
 /* ==================== SLIDE 03 — ARQUITETURA ==================== */
+function NexusBlueprintParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Grade de blueprint */}
+      <div className="absolute inset-0 opacity-[0.07]" style={layer(6)}>
+        <div className="absolute inset-0" style={{
+          backgroundImage:
+            "linear-gradient(to right, #9DCA79 1px, transparent 1px), linear-gradient(to bottom, #9DCA79 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }} />
+      </div>
+      {/* Eixos centrais */}
+      <div className="absolute inset-0" style={layer(10)}>
+        <div className="absolute left-1/2 top-0 bottom-0 w-px" style={{ background: "rgba(157,202,121,0.18)" }} />
+        <div className="absolute left-0 right-0 top-1/2 h-px" style={{ background: "rgba(157,202,121,0.12)" }} />
+      </div>
+      {/* SVG blueprint da arquitetura NEXUS */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMid meet"
+        style={{ ...layer(18), opacity: 0.55 }}
+      >
+        {/* Núcleo NEXUS */}
+        <circle cx="800" cy="320" r="110" fill="none" stroke="#9DCA79" strokeWidth="1" strokeDasharray="700" className="bp-draw" style={{ animationDelay: "0s" }} />
+        <circle cx="800" cy="320" r="70" fill="none" stroke="rgba(192,192,192,0.35)" strokeWidth="0.8" strokeDasharray="440" className="bp-draw" style={{ animationDelay: "0.2s" }} />
+        <text x="800" y="328" textAnchor="middle" fontFamily="Plus Jakarta Sans" fontWeight="200" fontSize="42" fill="rgba(247,246,244,0.55)" letterSpacing="-1">NEXUS</text>
+        {/* Linhas que descem para os 5 módulos sustentando o sistema */}
+        {[240, 520, 800, 1080, 1360].map((x, i) => (
+          <g key={i}>
+            <line x1="800" y1="430" x2={x} y2="640" stroke="#9DCA79" strokeWidth="0.8" strokeOpacity="0.45" strokeDasharray="380" className="bp-draw" style={{ animationDelay: `${0.3 + i * 0.08}s` }} />
+            <rect x={x - 70} y="640" width="140" height="120" fill="none" stroke="rgba(192,192,192,0.4)" strokeWidth="0.8" strokeDasharray="520" className="bp-draw" style={{ animationDelay: `${0.5 + i * 0.08}s` }} />
+            <text x={x} y="710" textAnchor="middle" fontFamily="Space Mono" fontSize="11" fill="rgba(157,202,121,0.7)" letterSpacing="2">MÓDULO {String(i + 1).padStart(2, "0")}</text>
+          </g>
+        ))}
+        {/* Cotas */}
+        <line x1="80" y1="320" x2="690" y2="320" stroke="rgba(192,192,192,0.2)" strokeWidth="0.5" strokeDasharray="4 4" />
+        <line x1="910" y1="320" x2="1520" y2="320" stroke="rgba(192,192,192,0.2)" strokeWidth="0.5" strokeDasharray="4 4" />
+        <text x="100" y="310" fontFamily="Space Mono" fontSize="10" fill="rgba(157,202,121,0.55)" letterSpacing="2">ARQUITETURA · SUSTENTADA POR 5 PILARES</text>
+      </svg>
+      {/* Vinheta */}
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse at 50% 50%, rgba(10,10,10,0) 0%, rgba(10,10,10,0.5) 80%, rgba(10,10,10,0.85) 100%)",
+      }} />
+    </div>
+  );
+}
+
+const ModuleIcon = ({ kind }: { kind: string }) => {
+  // Cada ícone usa stroke-dashoffset para "ser desenhado" simultaneamente
+  const common = {
+    fill: "none",
+    stroke: "#9DCA79",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  return (
+    <svg viewBox="0 0 64 64" className="w-12 h-12 nx-icon-wrap" aria-hidden>
+      <g className="nx-icon-glow">
+        {kind === "01" && (
+          <>
+            <circle cx="32" cy="32" r="20" {...common} pathLength={1} className="nx-draw" />
+            <circle cx="32" cy="32" r="10" {...common} pathLength={1} className="nx-draw" />
+            <circle cx="32" cy="32" r="2.5" fill="#9DCA79" />
+          </>
+        )}
+        {kind === "02" && (
+          <>
+            <circle cx="22" cy="24" r="6" {...common} pathLength={1} className="nx-draw" />
+            <circle cx="42" cy="24" r="6" {...common} pathLength={1} className="nx-draw" />
+            <path d="M10 50 C 14 38, 30 38, 32 50" {...common} pathLength={1} className="nx-draw" />
+            <path d="M32 50 C 34 38, 50 38, 54 50" {...common} pathLength={1} className="nx-draw" />
+          </>
+        )}
+        {kind === "03" && (
+          <>
+            <path d="M12 18 L32 12 L52 18 L32 24 Z" {...common} pathLength={1} className="nx-draw" />
+            <path d="M12 18 L12 44 L32 50 L52 44 L52 18" {...common} pathLength={1} className="nx-draw" />
+            <path d="M32 24 L32 50" {...common} pathLength={1} className="nx-draw" />
+          </>
+        )}
+        {kind === "04" && (
+          <>
+            <circle cx="20" cy="22" r="5" {...common} pathLength={1} className="nx-draw" />
+            <circle cx="44" cy="22" r="5" {...common} pathLength={1} className="nx-draw" />
+            <circle cx="32" cy="44" r="5" {...common} pathLength={1} className="nx-draw" />
+            <path d="M22 26 L30 40 M42 26 L34 40 M25 22 L39 22" {...common} pathLength={1} className="nx-draw" />
+          </>
+        )}
+        {kind === "05" && (
+          <>
+            <path d="M32 10 L52 18 L52 32 C52 44 42 52 32 56 C22 52 12 44 12 32 L12 18 Z" {...common} pathLength={1} className="nx-draw" />
+            <path d="M24 32 L30 38 L42 26" {...common} pathLength={1} className="nx-draw" />
+          </>
+        )}
+      </g>
+    </svg>
+  );
+};
+
 function Slide03() {
   return (
-    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex flex-col">
-      <div className="slide-content active flex-1 flex flex-col">
+    <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[80px] flex flex-col overflow-hidden">
+      <NexusBlueprintParallax />
+      <div className="slide-content active flex-1 flex flex-col relative z-10">
         <Eyebrow>ARQUITETURA DO SISTEMA</Eyebrow>
         <h2
           className="mt-6 font-display font-extralight text-[var(--white-warm)]"
@@ -774,7 +1114,10 @@ function Slide03() {
                 <div className="font-mono text-[9px] text-[var(--green)] tracking-[0.2em] uppercase">
                   Módulo {m.n}
                 </div>
-                <div className="mt-6 font-display font-extralight text-[28px] text-[var(--white-warm)] leading-tight">
+                <div className="mt-5">
+                  <ModuleIcon kind={m.n} />
+                </div>
+                <div className="mt-5 font-display font-extralight text-[28px] text-[var(--white-warm)] leading-tight">
                   {m.name}
                 </div>
               </div>
@@ -791,6 +1134,7 @@ function Slide03() {
     </div>
   );
 }
+
 
 /* ==================== SLIDES 04-13 — PRODUTOS ==================== */
 const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
@@ -884,6 +1228,18 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
             <PAR2026Parallax />
           ) : p.name === "Academia de Líderes Newe" ? (
             <AcademiaLideresParallax />
+          ) : p.name === "Nosso Jeito de Ser" ? (
+            <StarrySkyParallax />
+          ) : p.name === "Academia de Vendas Newe" ? (
+            <AcademiaVendasParallax />
+          ) : p.name === "HYNstaNewe" ? (
+            <HynstaNeweParallax />
+          ) : p.name === "Habitar a Estrutura" ? (
+            <HabitarEstruturaParallax />
+          ) : p.name === "Plataforma de Marca" ? (
+            <PlataformaMarcaParallax />
+          ) : p.name === "HUB Hyndra" ? (
+            <HubHyndraParallax />
           ) : (
 
 
