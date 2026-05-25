@@ -81,8 +81,8 @@ export const products: Product[] = [
     rationale: "Decisões estratégicas — como a escolha de uma agência de branding — costumam ser tomadas por impressão. Este sistema transforma julgamento em método auditável.",
     tension: "A intuição não documentada como método decisório em escolhas que impactam milhões de reais.",
     market: "Gartner Peer Insights · Consultoria + SaaS Procurement",
-    implant: "R$ 60k", monthly: "R$ 6k/mês", nexus: "R$ 8k",
-    savings: "R$ 206k", savingsValue: 206,
+    implant: "R$ 60k", monthly: "R$ 6k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 213k", savingsValue: 213,
   },
   {
     n: "05", moduleN: "03", module: "Conhecimento",
