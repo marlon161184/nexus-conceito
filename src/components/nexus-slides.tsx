@@ -1393,7 +1393,8 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
 function Slide14() {
   const totalImplant = "R$ 1,0M";
   const totalMonthly2y = "R$ 2,1M";
-  const totalSavings = "R$ 3,3M+";
+  const totalSavings = "R$ 3,4M+";
+  const totalNexus = "R$ 9,4k";
 
   const sum2y = (impl: string, monthly: string) => {
     const i = parseFloat(impl.replace(/[^\d,]/g, "").replace(",", "."));
