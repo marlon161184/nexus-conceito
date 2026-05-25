@@ -1453,11 +1453,11 @@ function Slide14() {
 
         {/* Table */}
         <div className="mt-7 flex-1 min-h-0 overflow-auto no-scrollbar bg-[var(--black)] border border-[var(--graphite)]">
-          <table className="w-full font-mono text-[10px] text-[var(--silver)]">
+          <table className="w-full font-mono text-[12px] text-[var(--silver)]">
             <thead className="text-[var(--silver-dark)] uppercase tracking-[0.15em]">
               <tr className="border-b border-[var(--graphite)]">
                 {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS*", "ECONOMIA"].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[8px] font-normal">{h}</th>
+                  <th key={h} className="text-left px-4 py-3 text-[10px] font-normal">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -1473,26 +1473,26 @@ function Slide14() {
                   <td className="px-4 py-2.5">{p.monthly}</td>
                   <td className="px-4 py-2.5">{sum2y(p.implant, p.monthly)}</td>
                   <td className="px-4 py-2.5">{p.nexus}</td>
-                  <td className="px-4 py-2.5 font-bold text-[11px] text-[var(--green)]">{p.savings}</td>
+                  <td className="px-4 py-2.5 font-bold text-[13px] text-[var(--green)]">{p.savings}</td>
                 </tr>
               ))}
             </tbody>
             <tfoot style={{ borderTop: "1px solid var(--green)" }}>
               <tr>
-                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
+                <td className="px-4 py-3 font-mono text-[11px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
                   CUSTO TOTAL NEXUS
                 </td>
                 <td colSpan={5} />
-                <td className="px-4 py-3 font-mono font-bold text-[13px] text-[var(--silver)]">
+                <td className="px-4 py-3 font-mono font-bold text-[15px] text-[var(--silver)]">
                   {totalNexus}
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
+                <td className="px-4 py-3 font-mono text-[11px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
                   TOTAL ECONOMIA
                 </td>
                 <td colSpan={5} />
-                <td className="px-4 py-3 font-mono font-bold text-[16px] text-[var(--green)]">
+                <td className="px-4 py-3 font-mono font-bold text-[18px] text-[var(--green)]">
                   {totalSavings}
                 </td>
               </tr>
@@ -1506,17 +1506,17 @@ function Slide14() {
         >
           <div className="flex items-center gap-3 mb-3">
             <div style={{ width: 2, height: 32, background: "var(--green)", flexShrink: 0 }} />
-            <div className="font-mono uppercase text-[8px] text-[var(--green)] tracking-[0.2em]">
+            <div className="font-mono uppercase text-[11px] text-[var(--green)] tracking-[0.2em]">
               NOTA DE METODOLOGIA · ANÁLISE FINANCEIRA
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 CUSTO REAL DO NEXUS
               </div>
-              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+              <div className="font-mono text-[10px] text-[var(--silver)] leading-[1.7]">
                 Plano Pro Lovable (3 meses): <span className="text-[var(--white-warm)]">R$ 420</span><br />
                 Créditos adicionais: <span className="text-[var(--white-warm)]">R$ 220</span><br />
                 Custo de oportunidade (44h): <span className="text-[var(--white-warm)]">R$ 8.750</span><br />
@@ -1530,10 +1530,10 @@ function Slide14() {
             </div>
 
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 VALORES DE MERCADO · METODOLOGIA
               </div>
-              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+              <div className="font-mono text-[10px] text-[var(--silver)] leading-[1.7]">
                 Fontes: tabelas públicas 2024–2026<br />
                 (Culture Amp, BambooHR, SAP SF,<br />
                 Frontify, Confluence, ChartHop).<br /><br />
@@ -1548,10 +1548,10 @@ function Slide14() {
             </div>
 
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 GRAU DE CONFIANÇA POR PRODUTO
               </div>
-              <div className="font-mono text-[7px] leading-[1.7]">
+              <div className="font-mono text-[10px] leading-[1.7]">
                 <span style={{ color: "var(--green)" }}>↑ Mais defensáveis:</span><br />
                 <span className="text-[var(--silver)]">
                   PAR 2026 (SAP SF tem tabela pública)<br />
