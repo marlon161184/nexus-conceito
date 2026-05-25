@@ -123,8 +123,8 @@ export const products: Product[] = [
     rationale: "Em organizações que crescem, as pessoas param de se conhecer. A proximidade que existe no time de 15 precisa ser arquitetada quando o time chega a 50, 100, 200.",
     tension: "O anonimato interno que cresce com a empresa — onde colegas são estranhos e a cultura vira abstração.",
     market: "Microsoft Viva Engage · Workplace by Meta",
-    implant: "R$ 60k", monthly: "R$ 5k/mês", nexus: "R$ 10k",
-    savings: "R$ 190k", savingsValue: 190,
+    implant: "R$ 60k", monthly: "R$ 5k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 199k", savingsValue: 199,
   },
   {
     n: "08", moduleN: "04", module: "Comunidade",
