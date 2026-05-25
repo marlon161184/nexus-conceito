@@ -1609,12 +1609,12 @@ function Slide15() {
   return (
     <div className="relative w-full h-full bg-[var(--black)] px-[80px] py-[50px] flex flex-col overflow-hidden">
       <div className="slide-content active flex-1 flex flex-col min-h-0">
-        <Eyebrow>NOMES ALTERNATIVOS · PROVOCAÇÃO ESTRATÉGICA</Eyebrow>
+        <Eyebrow>PROVOCAÇÃO ESTRATÉGICA</Eyebrow>
         <h2
           className="mt-4 font-display font-extralight text-[var(--white-warm)]"
           style={{ fontSize: "clamp(30px, 3vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
         >
-          Nomes que incomodam bem.
+          Nomes alternativos.
         </h2>
         <p className="mt-3 font-serif italic text-[15px] text-[var(--silver)] max-w-[700px] leading-[1.45]">
           “Um nome estratégico não é apenas bonito — é uma declaração de intenção. As opções abaixo provocam se os nomes atuais comunicam o que cada produto faz.”
