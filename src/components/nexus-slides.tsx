@@ -937,7 +937,7 @@ function Slide01() {
   const stats = [
     { value: "10", label: "PRODUTOS DIGITAIS" },
     { value: "5", label: "MÓDULOS ESTRATÉGICOS" },
-    { value: "R$ 3,3M+", label: "ECONOMIA ANUAL EST.", green: true },
+    { value: "R$ 3,4M+", label: "ECONOMIA ANUAL EST.", green: true },
     { value: "100%", label: "PROPRIEDADE INTELECTUAL" },
   ];
   return (
