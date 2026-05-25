@@ -133,13 +133,13 @@ function AcademiaVendasParallax() {
     <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0" style={{ ...layer(12), inset: "-30px" }}>
         <img src={academiaVendasHero} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "grayscale(0.25) brightness(0.7) contrast(1.08) saturate(0.95)" }} />
+          style={{ filter: "grayscale(0.1) brightness(0.92) contrast(1.05) saturate(1)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.45) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.2) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        background: "linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
       }} />
       <div className="absolute" style={{ ...layer(44), bottom: "7%", right: "7%", width: 170 }}>
         <img src={academiaVendasLogo} alt="Academia de Vendas Newe" className="w-full h-auto"
@@ -175,10 +175,10 @@ function HynstaNeweParallax() {
           style={{ filter: "drop-shadow(0 6px 30px rgba(0,0,0,0.7))", mixBlendMode: "screen", opacity: 0.96 }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.18) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        background: "linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={layer(52)}>
         <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
@@ -207,12 +207,12 @@ function HabitarEstruturaParallax() {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.25)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.1)" }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.18) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        background: "linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
@@ -235,13 +235,13 @@ function PlataformaMarcaParallax() {
     <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0" style={{ ...layer(10), inset: "-20px" }}>
         <img src={miniBrandbook} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.88) contrast(1.05)" }} />
+          style={{ filter: "brightness(1.02) contrast(1.03)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.18) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        background: "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
@@ -264,13 +264,13 @@ function HubHyndraParallax() {
     <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0" style={{ ...layer(10), inset: "-20px" }}>
         <img src={hubHyndraHero} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.78) contrast(1.08)" }} />
+          style={{ filter: "brightness(0.98) contrast(1.05)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.4) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.18) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+        background: "linear-gradient(180deg, rgba(10,10,10,0.12) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={layer(48)}>
         <div className="absolute" style={{ top: "6%", left: "8%", display: "flex", alignItems: "center", gap: 10 }}>
@@ -339,7 +339,7 @@ function AllAboardParallax() {
           src={allAboardPavilion}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "grayscale(0.35) brightness(0.62) contrast(1.05)" }}
+          style={{ filter: "grayscale(0.15) brightness(0.88) contrast(1.04)" }}
         />
       </div>
 
@@ -355,7 +355,7 @@ function AllAboardParallax() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.45) 100%)",
+            "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.2) 100%)",
         }}
       />
 
@@ -490,7 +490,7 @@ function PAR2026Parallax() {
           src={par2026Type}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "grayscale(0.2) brightness(0.78) contrast(1.1)" }}
+          style={{ filter: "grayscale(0.08) brightness(0.98) contrast(1.05)" }}
         />
       </div>
 
@@ -531,14 +531,14 @@ function PAR2026Parallax() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.35) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.35) 100%)",
+            "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.15) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.15) 100%)",
         }}
       />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.85) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.5) 100%)",
         }}
       />
 
@@ -703,7 +703,7 @@ function AcademiaLideresParallax() {
           style={{
             objectFit: "contain",
             objectPosition: "center center",
-            filter: "grayscale(20%) brightness(0.72) contrast(1.1) saturate(0.95)",
+            filter: "grayscale(8%) brightness(0.95) contrast(1.05) saturate(1)",
           }}
         />
         {/* Vinheta suave para integrar a foto ao fundo escuro */}
