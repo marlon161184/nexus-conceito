@@ -136,7 +136,7 @@ function AcademiaVendasParallax() {
           style={{ filter: "grayscale(0.1) brightness(0.92) contrast(1.05) saturate(1)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(180deg, rgba(10,10,10,0.03) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.12) 100%)",
@@ -175,7 +175,7 @@ function HynstaNeweParallax() {
           style={{ filter: "drop-shadow(0 6px 30px rgba(0,0,0,0.7))", mixBlendMode: "screen", opacity: 0.96 }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(180deg, rgba(10,10,10,0.03) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.12) 100%)",
@@ -209,7 +209,7 @@ function HabitarEstruturaParallax() {
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.1)" }} />
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(180deg, rgba(10,10,10,0.03) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.12) 100%)",
@@ -238,7 +238,7 @@ function PlataformaMarcaParallax() {
           style={{ filter: "brightness(1.02) contrast(1.03)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(180deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.12) 100%)",
@@ -267,7 +267,7 @@ function HubHyndraParallax() {
           style={{ filter: "brightness(0.98) contrast(1.05)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+        background: "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
       }} />
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "linear-gradient(180deg, rgba(10,10,10,0.04) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.12) 100%)",
@@ -355,7 +355,7 @@ function AllAboardParallax() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+            "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
         }}
       />
 
@@ -531,7 +531,7 @@ function PAR2026Parallax() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
+            "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 22%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 100%)",
         }}
       />
       <div
@@ -719,7 +719,7 @@ function AcademiaLideresParallax() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, rgba(10,10,10,0.06) 0%, rgba(10,10,10,0.06) 14%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.06) 86%, rgba(10,10,10,0.06) 100%)",
+              "linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.06) 14%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.06) 86%, rgba(10,10,10,0.15) 100%)",
           }}
         />
         {/* Borda inferior escurecida (consistência com demais slides) */}
