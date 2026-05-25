@@ -1673,10 +1673,97 @@ function Slide16() {
 }
 
 /* ==================== REGISTRY ==================== */
+/* ==================== SLIDE — OS 10 PRODUTOS DO SISTEMA (grid 5x2) ==================== */
+const PRODUTOS_GRID = [
+  { n: "01", orig: "Nosso Jeito de Ser",       alt: "CODEX",                 anchor: "#C9B46E", palette: ["#1A1A2E","#C9B46E","#2D2D4A","#F0EAD6"], tagline: "A lei que nos forma",            pills: ["FUNDANTE","SOBERANO","INSCRITO"] },
+  { n: "02", orig: "All Aboard",                alt: "RITO DE CHEGADA",       anchor: "#8FBC8F", palette: ["#2C5F2E","#8FBC8F","#F4F0E6","#1C3A1E"], tagline: "Entrada que marca",              pills: ["TRAVESSIA","LIMIAR","PERTENCIMENTO"] },
+  { n: "03", orig: "PAR 2026",                  alt: "MOTOR DE MERECIMENTO",  anchor: "#FFD700", palette: ["#8B1A1A","#FFD700","#2A2A2A","#F5F5F0"], tagline: "Equidade como sistema",          pills: ["MÉRITO","CRITÉRIO","IMPACTO"] },
+  { n: "04", orig: "Decidir com Intenção",      alt: "MESA DE DECISÃO",       anchor: "#778DA9", palette: ["#0D1B2A","#E8D5B7","#415A77","#778DA9"], tagline: "Poder com clareza",              pills: ["DELIBERAÇÃO","PROTOCOLO","CONSEQUÊNCIA"] },
+  { n: "05", orig: "Academia de Líderes Newe",  alt: "FORJA",                 anchor: "#FF8C42", palette: ["#3D1C02","#FF8C42","#F5C518","#1A0A00"], tagline: "Transformação, não formação",    pills: ["PRESSÃO","TÊMPERA","TRANSFORMAÇÃO"] },
+  { n: "06", orig: "Academia de Vendas Newe",   alt: "ESCOLA DO COMPRADOR",   anchor: "#BDC3C7", palette: ["#2C3E50","#BDC3C7","#E8E8E8","#1A252F"], tagline: "Entender antes de vender",       pills: ["PERCEPÇÃO","DESEJO","CURADORIA"] },
+  { n: "07", orig: "HYNstaNewe",                alt: "ALMANAQUE VIVO",        anchor: "#9B88D4", palette: ["#4A4A8A","#E8E4FF","#9B88D4","#1E1E3F"], tagline: "Memória que respira",            pills: ["REGISTRO","ACERVO","CONTINUIDADE"] },
+  { n: "08", orig: "Habitar a Estrutura",       alt: "TOPOGRAFIA HUMANA",     anchor: "#95D5B2", palette: ["#1B4332","#95D5B2","#D8F3DC","#081C15"], tagline: "Organograma como território",    pills: ["TERRITÓRIO","NÓ","ADJACÊNCIA"] },
+  { n: "09", orig: "Plataforma de Marca",       alt: "GRAMÁTICA VIVA",        anchor: "#E8B4E8", palette: ["#5C1A5C","#E8B4E8","#B56AB5","#2E002E"], tagline: "Marca como língua",              pills: ["VOCABULÁRIO","SINTAXE","VOZ"] },
+  { n: "10", orig: "HUB Hyndra",                alt: "CONSTITUIÇÃO DO GRUPO", anchor: "#C8A951", palette: ["#1C1C1C","#C8A951","#3D3D3D","#F8F5EE"], tagline: "Carta magna institucional",      pills: ["ESTATUTO","VIGÊNCIA","MANDATO"] },
+];
+
+function NexusInline({ size = 11 }: { size?: number }) {
+  return (
+    <span className="font-mono uppercase" style={{ fontSize: `${size}px`, letterSpacing: "0.2em", color: "#E8E8E8" }}>
+      NE
+      <span style={{ color: "#9DCA79", textShadow: "0 0 10px rgba(157,202,121,0.9), 0 0 20px rgba(157,202,121,0.5), 0 0 40px rgba(157,202,121,0.2)" }}>X</span>
+      US
+    </span>
+  );
+}
+
+function SlideProdutosGrid() {
+  return (
+    <div className="relative w-full h-full overflow-hidden" style={{ background: "#0A0A0B" }}>
+      <div className="slide-content active relative h-full px-[80px] pt-[70px] pb-[60px] flex flex-col z-10">
+        <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center gap-4">
+            <NexusInline size={14} />
+            <span className="font-mono uppercase" style={{ fontSize: "10px", letterSpacing: "0.22em", color: "rgba(255,255,255,0.45)" }}>
+              · SISTEMA OPERACIONAL DA CULTURA
+            </span>
+          </div>
+          <span className="font-mono uppercase" style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" }}>
+            5 MÓDULOS · 10 PRODUTOS
+          </span>
+        </div>
+
+        <div className="mb-6">
+          <div className="font-mono uppercase" style={{ fontSize: "10px", letterSpacing: "0.2em", color: "#9DCA79" }}>
+            OS 10 PRODUTOS DO SISTEMA
+          </div>
+          <div className="mt-3 font-display font-extralight text-[var(--white-warm)]" style={{ fontSize: "40px", letterSpacing: "-0.025em", lineHeight: 1 }}>
+            Um ecossistema com identidade diferenciada por produto.
+          </div>
+        </div>
+
+        <div className="flex-1 grid grid-cols-5 grid-rows-2" style={{ gap: "1px", background: "rgba(157,202,121,0.15)" }}>
+          {PRODUTOS_GRID.map((p) => (
+            <div key={p.n} className="relative flex flex-col" style={{ background: "#0A0A0B", padding: "20px 22px", minHeight: "180px" }}>
+              <div className="absolute top-0 left-0 right-0" style={{ height: "3px", background: p.anchor }} />
+              <div className="font-mono" style={{ fontSize: "9px", color: "#9DCA79", opacity: 0.5, marginTop: "6px" }}>{p.n}</div>
+              <div className="font-mono uppercase mt-1" style={{ fontSize: "8px", letterSpacing: "0.15em", color: "rgba(255,255,255,0.35)" }}>{p.orig}</div>
+              <div className="mt-2 leading-none" style={{ fontFamily: '"Bebas Neue", "Plus Jakarta Sans", sans-serif', fontSize: "26px", letterSpacing: "0.02em", color: p.anchor }}>{p.alt}</div>
+              <div className="font-serif italic mt-2" style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.25 }}>{p.tagline}</div>
+              <div className="mt-auto pt-3" style={{ borderTop: "0.5px solid rgba(255,255,255,0.07)" }}>
+                <div className="flex items-center gap-[6px]">
+                  {p.palette.map((c, i) => (
+                    <div key={i} style={{ width: "8px", height: "8px", borderRadius: "50%", background: c }} />
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-[5px] mt-2">
+                  {p.pills.map((pill) => (
+                    <span key={pill} className="font-mono uppercase" style={{ fontSize: "8px", letterSpacing: "0.12em", padding: "2px 7px", border: `0.5px solid ${p.anchor}`, color: p.anchor, borderRadius: 0 }}>
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 pt-6 flex items-center justify-between" style={{ borderTop: "0.5px solid rgba(255,255,255,0.08)" }}>
+          <NexusInline size={11} />
+          <span className="font-mono uppercase" style={{ fontSize: "9px", letterSpacing: "0.18em", color: "rgba(255,255,255,0.25)" }}>
+            SISTEMA OPERACIONAL DA CULTURA · 5 MÓDULOS · 10 PRODUTOS
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export const slides: Array<{ title: string; render: () => React.ReactNode }> = [
   { title: "Capa", render: () => <Slide01 /> },
   { title: "A Tese Estratégica", render: () => <Slide02 /> },
   { title: "Arquitetura do Sistema", render: () => <Slide03 /> },
+  { title: "Os 10 Produtos do Sistema", render: () => <SlideProdutosGrid /> },
   ...products.map((p, i) => ({
     title: p.name,
     render: () => <ProductSlide p={p} idx={i} />,
