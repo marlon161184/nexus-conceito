@@ -1453,11 +1453,11 @@ function Slide14() {
 
         {/* Table */}
         <div className="mt-7 flex-1 min-h-0 overflow-auto no-scrollbar bg-[var(--black)] border border-[var(--graphite)]">
-          <table className="w-full font-mono text-[10px] text-[var(--silver)]">
+          <table className="w-full font-mono text-[12px] text-[var(--silver)]">
             <thead className="text-[var(--silver-dark)] uppercase tracking-[0.15em]">
               <tr className="border-b border-[var(--graphite)]">
                 {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS*", "ECONOMIA"].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 text-[8px] font-normal">{h}</th>
+                  <th key={h} className="text-left px-4 py-3 text-[10px] font-normal">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -1473,26 +1473,26 @@ function Slide14() {
                   <td className="px-4 py-2.5">{p.monthly}</td>
                   <td className="px-4 py-2.5">{sum2y(p.implant, p.monthly)}</td>
                   <td className="px-4 py-2.5">{p.nexus}</td>
-                  <td className="px-4 py-2.5 font-bold text-[11px] text-[var(--green)]">{p.savings}</td>
+                  <td className="px-4 py-2.5 font-bold text-[13px] text-[var(--green)]">{p.savings}</td>
                 </tr>
               ))}
             </tbody>
             <tfoot style={{ borderTop: "1px solid var(--green)" }}>
               <tr>
-                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
+                <td className="px-4 py-3 font-mono text-[11px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
                   CUSTO TOTAL NEXUS
                 </td>
                 <td colSpan={5} />
-                <td className="px-4 py-3 font-mono font-bold text-[13px] text-[var(--silver)]">
+                <td className="px-4 py-3 font-mono font-bold text-[15px] text-[var(--silver)]">
                   {totalNexus}
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
+                <td className="px-4 py-3 font-mono text-[11px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
                   TOTAL ECONOMIA
                 </td>
                 <td colSpan={5} />
-                <td className="px-4 py-3 font-mono font-bold text-[16px] text-[var(--green)]">
+                <td className="px-4 py-3 font-mono font-bold text-[18px] text-[var(--green)]">
                   {totalSavings}
                 </td>
               </tr>
