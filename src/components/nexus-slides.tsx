@@ -1769,6 +1769,5 @@ export const slides: Array<{ title: string; render: () => React.ReactNode }> = [
   })),
   { title: "Análise Financeira", render: () => <Slide14 /> },
   { title: "Nomes Alternativos", render: () => <Slide15 /> },
-  { title: "Os 10 Produtos do Sistema", render: () => <SlideProdutosGrid /> },
   { title: "Encerramento", render: () => <Slide16 /> },
 ];
