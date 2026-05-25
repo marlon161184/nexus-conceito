@@ -137,8 +137,8 @@ export const products: Product[] = [
     rationale: "Para uma empresa de urbanismo, o organograma deveria ser tratado como planta arquitetônica — com rigor, beleza e função. Estrutura é produto.",
     tension: "A percepção de que hierarquia é distância. O diagrama burocrático que afasta ao invés de orientar.",
     market: "ChartHop · OrgWeaver · Lucidchart Enterprise",
-    implant: "R$ 30k", monthly: "R$ 4k/mês", nexus: "R$ 6k",
-    savings: "R$ 136k", savingsValue: 136,
+    implant: "R$ 30k", monthly: "R$ 4k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 141k", savingsValue: 141,
   },
   {
     n: "09", moduleN: "05", module: "Governança",
