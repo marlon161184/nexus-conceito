@@ -109,8 +109,8 @@ export const products: Product[] = [
     rationale: "No mercado de alto padrão, o consultor não vende o imóvel — vende o modo de habitar. A formação precisa estar à altura do que é vendido.",
     tension: "O treinamento genérico de vendas que não prepara para a complexidade filosófica e estética do comprador de luxo.",
     market: "TOTVS · Salesforce Trailhead · Academia CIJ",
-    implant: "R$ 80k", monthly: "R$ 9k/mês", nexus: "R$ 14k",
-    savings: "R$ 300k", savingsValue: 300,
+    implant: "R$ 80k", monthly: "R$ 9k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 313k", savingsValue: 313,
   },
   {
     n: "07", moduleN: "04", module: "Comunidade",
