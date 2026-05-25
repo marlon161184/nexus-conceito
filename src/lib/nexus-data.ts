@@ -151,8 +151,8 @@ export const products: Product[] = [
     rationale: "Uma marca de alto padrão não pode depender do critério individual de quem cria. Aqui, qualquer agência ou colaborador tem acesso ao DNA completo da Newe.",
     tension: "A marca que muda de tom conforme o prestador — o brand deck em PDF que ninguém lê, a identidade que existe só na cabeça de quem a criou.",
     market: "Frontify · Bynder · Zeroheight",
-    implant: "R$ 140k", monthly: "R$ 5k/mês", nexus: "R$ 20k",
-    savings: "R$ 270k", savingsValue: 270,
+    implant: "R$ 140k", monthly: "R$ 5k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 279k", savingsValue: 279,
   },
   {
     n: "10", moduleN: "05", module: "Governança",
