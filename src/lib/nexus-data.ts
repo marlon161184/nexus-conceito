@@ -67,8 +67,8 @@ export const products: Product[] = [
     rationale: "A PLR é o mecanismo de maior impacto na percepção de equidade. Quando opaca, gera desconfiança. Quando transparente, gera comprometimento com resultado.",
     tension: "A caixa-preta da remuneração variável — onde colaboradores recebem o resultado como loteria, não como consequência de seu desempenho.",
     market: "SAP SuccessFactors · Mercer Workforce",
-    implant: "R$ 220k", monthly: "R$ 22k/mês", nexus: "R$ 18k",
-    savings: "R$ 818k", savingsValue: 818,
+    implant: "R$ 220k", monthly: "R$ 22k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 835k", savingsValue: 835,
   },
   {
     n: "04", moduleN: "02", module: "Pessoas",
