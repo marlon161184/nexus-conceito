@@ -1506,17 +1506,17 @@ function Slide14() {
         >
           <div className="flex items-center gap-3 mb-3">
             <div style={{ width: 2, height: 32, background: "var(--green)", flexShrink: 0 }} />
-            <div className="font-mono uppercase text-[8px] text-[var(--green)] tracking-[0.2em]">
+            <div className="font-mono uppercase text-[11px] text-[var(--green)] tracking-[0.2em]">
               NOTA DE METODOLOGIA · ANÁLISE FINANCEIRA
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 CUSTO REAL DO NEXUS
               </div>
-              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+              <div className="font-mono text-[10px] text-[var(--silver)] leading-[1.7]">
                 Plano Pro Lovable (3 meses): <span className="text-[var(--white-warm)]">R$ 420</span><br />
                 Créditos adicionais: <span className="text-[var(--white-warm)]">R$ 220</span><br />
                 Custo de oportunidade (44h): <span className="text-[var(--white-warm)]">R$ 8.750</span><br />
@@ -1530,10 +1530,10 @@ function Slide14() {
             </div>
 
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 VALORES DE MERCADO · METODOLOGIA
               </div>
-              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+              <div className="font-mono text-[10px] text-[var(--silver)] leading-[1.7]">
                 Fontes: tabelas públicas 2024–2026<br />
                 (Culture Amp, BambooHR, SAP SF,<br />
                 Frontify, Confluence, ChartHop).<br /><br />
@@ -1548,10 +1548,10 @@ function Slide14() {
             </div>
 
             <div>
-              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 GRAU DE CONFIANÇA POR PRODUTO
               </div>
-              <div className="font-mono text-[7px] leading-[1.7]">
+              <div className="font-mono text-[10px] leading-[1.7]">
                 <span style={{ color: "var(--green)" }}>↑ Mais defensáveis:</span><br />
                 <span className="text-[var(--silver)]">
                   PAR 2026 (SAP SF tem tabela pública)<br />
