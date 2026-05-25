@@ -95,8 +95,8 @@ export const products: Product[] = [
     rationale: "Líderes formados por plataformas genéricas produzem liderança genérica. A formação precisa ser proprietária, contextual e conectada ao propósito do grupo.",
     tension: "A terceirização da formação que produz gestores competentes no abstrato e desconectados do concreto do grupo.",
     market: "Cornerstone OnDemand · Docebo LMS",
-    implant: "R$ 140k", monthly: "R$ 14k/mês", nexus: "R$ 16k",
-    savings: "R$ 510k", savingsValue: 510,
+    implant: "R$ 140k", monthly: "R$ 14k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 526k", savingsValue: 526,
   },
   {
     n: "06", moduleN: "03", module: "Conhecimento",
