@@ -53,8 +53,8 @@ export const products: Product[] = [
     rationale: "O primeiro dia de trabalho é o momento de maior abertura psicológica. Empresas que não o arquitetam desperdiçam a única janela onde a cultura é recebida sem resistência.",
     tension: "O onboarding genérico que trata chegada como burocracia, não como ritual de pertencimento.",
     market: "BambooHR · Workday Onboarding",
-    implant: "R$ 90k", monthly: "R$ 8k/mês", nexus: "R$ 12k",
-    savings: "R$ 302k", savingsValue: 302,
+    implant: "R$ 90k", monthly: "R$ 8k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 314k", savingsValue: 314,
   },
   {
     n: "03", moduleN: "02", module: "Pessoas",
