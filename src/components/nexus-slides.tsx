@@ -1456,7 +1456,7 @@ function Slide14() {
           <table className="w-full font-mono text-[10px] text-[var(--silver)]">
             <thead className="text-[var(--silver-dark)] uppercase tracking-[0.15em]">
               <tr className="border-b border-[var(--graphite)]">
-                {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS", "ECONOMIA"].map((h) => (
+                {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS*", "ECONOMIA"].map((h) => (
                   <th key={h} className="text-left px-4 py-3 text-[8px] font-normal">{h}</th>
                 ))}
               </tr>
