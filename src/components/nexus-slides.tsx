@@ -1376,8 +1376,13 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
             style={{ width: `${pct}%`, transition: "width 600ms ease" }}
           />
         </div>
-        <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
-          {p.savings}
+        <div className="flex flex-col items-end">
+          <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
+            {p.savings}
+          </div>
+          <div className="font-mono text-[7px] text-[var(--silver-dark)] tracking-[0.08em] mt-0.5">
+            vs. mercado · faixa estimada 2024–2026
+          </div>
         </div>
       </div>
     </div>
