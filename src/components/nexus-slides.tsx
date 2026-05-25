@@ -1763,12 +1763,12 @@ export const slides: Array<{ title: string; render: () => React.ReactNode }> = [
   { title: "Capa", render: () => <Slide01 /> },
   { title: "A Tese Estratégica", render: () => <Slide02 /> },
   { title: "Arquitetura do Sistema", render: () => <Slide03 /> },
-  { title: "Os 10 Produtos do Sistema", render: () => <SlideProdutosGrid /> },
   ...products.map((p, i) => ({
     title: p.name,
     render: () => <ProductSlide p={p} idx={i} />,
   })),
   { title: "Análise Financeira", render: () => <Slide14 /> },
   { title: "Nomes Alternativos", render: () => <Slide15 /> },
+  { title: "Os 10 Produtos do Sistema", render: () => <SlideProdutosGrid /> },
   { title: "Encerramento", render: () => <Slide16 /> },
 ];
