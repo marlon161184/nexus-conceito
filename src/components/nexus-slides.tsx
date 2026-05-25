@@ -1376,8 +1376,13 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
             style={{ width: `${pct}%`, transition: "width 600ms ease" }}
           />
         </div>
-        <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
-          {p.savings}
+        <div className="flex flex-col items-end">
+          <div className="font-mono font-bold text-[18px] text-[var(--green)] whitespace-nowrap">
+            {p.savings}
+          </div>
+          <div className="font-mono text-[7px] text-[var(--silver-dark)] tracking-[0.08em] mt-0.5">
+            vs. mercado · faixa estimada 2024–2026
+          </div>
         </div>
       </div>
     </div>
@@ -1388,7 +1393,8 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
 function Slide14() {
   const totalImplant = "R$ 1,0M";
   const totalMonthly2y = "R$ 2,1M";
-  const totalSavings = "R$ 3,3M+";
+  const totalSavings = "R$ 3,4M+";
+  const totalNexus = "R$ 9,4k";
 
   const sum2y = (impl: string, monthly: string) => {
     const i = parseFloat(impl.replace(/[^\d,]/g, "").replace(",", "."));
@@ -1436,8 +1442,11 @@ function Slide14() {
             >
               {totalSavings}
             </div>
-            <div className="mt-3 font-mono text-[9px] text-[var(--silver)]">
-              Vs. aquisição de plataformas equivalentes
+            <div className="mt-2 font-mono text-[9px] text-[var(--silver)]">
+              Custo real Nexus: <span style={{ color: "var(--green)" }}>{totalNexus}</span>
+            </div>
+            <div className="mt-1 font-mono text-[9px] text-[var(--silver-dark)]">
+              Vs. R$ 3,4M em plataformas de mercado equivalentes
             </div>
           </div>
         </div>
@@ -1447,7 +1456,7 @@ function Slide14() {
           <table className="w-full font-mono text-[10px] text-[var(--silver)]">
             <thead className="text-[var(--silver-dark)] uppercase tracking-[0.15em]">
               <tr className="border-b border-[var(--graphite)]">
-                {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS", "ECONOMIA"].map((h) => (
+                {["PRODUTO", "EQUIVALENTE", "IMPLANT.", "MENSAL.", "CUSTO 2 ANOS", "NEXUS*", "ECONOMIA"].map((h) => (
                   <th key={h} className="text-left px-4 py-3 text-[8px] font-normal">{h}</th>
                 ))}
               </tr>
@@ -1470,17 +1479,94 @@ function Slide14() {
             </tbody>
             <tfoot style={{ borderTop: "1px solid var(--green)" }}>
               <tr>
-                <td colSpan={6} className="px-4 py-3 text-right uppercase tracking-[0.15em] text-[var(--silver-dark)] text-[9px]">
+                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
+                  CUSTO TOTAL NEXUS
+                </td>
+                <td colSpan={5} />
+                <td className="px-4 py-3 font-mono font-bold text-[13px] text-[var(--silver)]">
+                  {totalNexus}
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-mono text-[9px] text-[var(--silver-dark)] uppercase tracking-[0.12em]">
                   TOTAL ECONOMIA
                 </td>
-                <td className="px-4 py-3 font-bold text-[16px] text-[var(--green)]">{totalSavings}</td>
+                <td colSpan={5} />
+                <td className="px-4 py-3 font-mono font-bold text-[16px] text-[var(--green)]">
+                  {totalSavings}
+                </td>
               </tr>
             </tfoot>
           </table>
         </div>
 
-        <div className="mt-3 font-mono text-[7px] text-[var(--silver-dark)] leading-relaxed">
-          * Valores calculados para 2 anos. Custo Nexus estimado via Lovable + manutenção incremental. Referências públicas 2024–2026.
+        <div
+          className="mt-4 border border-[var(--graphite)] bg-[var(--black)]"
+          style={{ padding: "14px 18px" }}
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <div style={{ width: 2, height: 32, background: "var(--green)", flexShrink: 0 }} />
+            <div className="font-mono uppercase text-[8px] text-[var(--green)] tracking-[0.2em]">
+              NOTA DE METODOLOGIA · ANÁLISE FINANCEIRA
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6">
+            <div>
+              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+                CUSTO REAL DO NEXUS
+              </div>
+              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+                Plano Pro Lovable (3 meses): <span className="text-[var(--white-warm)]">R$ 420</span><br />
+                Créditos adicionais: <span className="text-[var(--white-warm)]">R$ 220</span><br />
+                Custo de oportunidade (44h): <span className="text-[var(--white-warm)]">R$ 8.750</span><br />
+                Infraestrutura adicional: <span className="text-[var(--white-warm)]">R$ 0</span><br />
+                <span style={{ color: "var(--green)", fontWeight: "bold" }}>Total: R$ 9.390</span><br />
+                <span style={{ color: "rgba(107,107,107,0.8)" }}>
+                  Construído internamente por Marlon Silva,<br />
+                  Head de Pessoas e Cultura.
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+                VALORES DE MERCADO · METODOLOGIA
+              </div>
+              <div className="font-mono text-[7px] text-[var(--silver)] leading-[1.7]">
+                Fontes: tabelas públicas 2024–2026<br />
+                (Culture Amp, BambooHR, SAP SF,<br />
+                Frontify, Confluence, ChartHop).<br /><br />
+                Premissas: grupo de 50 usuários,<br />
+                plano mid-market, câmbio R$ 5,60/USD.<br /><br />
+                <span style={{ color: "rgba(107,107,107,0.8)" }}>
+                  Não são cotações formais.<br />
+                  Representam faixa de referência<br />
+                  para análise de ordem de grandeza.
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <div className="font-mono uppercase text-[7px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
+                GRAU DE CONFIANÇA POR PRODUTO
+              </div>
+              <div className="font-mono text-[7px] leading-[1.7]">
+                <span style={{ color: "var(--green)" }}>↑ Mais defensáveis:</span><br />
+                <span className="text-[var(--silver)]">
+                  PAR 2026 (SAP SF tem tabela pública)<br />
+                  Plataforma de Marca (agência real)<br />
+                  Academia de Líderes (LMS corporativo)
+                </span><br /><br />
+                <span style={{ color: "#C0A060" }}>↓ Faixas mais amplas:</span><br />
+                <span className="text-[var(--silver)]">
+                  HYNstaNewe (se M365 já contratado)<br />
+                  HUB Hyndra (Confluence = baixo custo)<br />
+                  Habitar a Estrutura (ChartHop acessível)
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
