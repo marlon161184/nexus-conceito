@@ -39,8 +39,8 @@ export const products: Product[] = [
     rationale: "Em empresas de alto padrão, a cultura é o diferencial mais difícil de replicar. Mas ela só diferencia se for operável — não apenas declarada.",
     tension: "A distância entre o que a organização declara e o que pratica no dia a dia.",
     market: "Culture Amp · Lattice",
-    implant: "R$ 120k", monthly: "R$ 12k/mês", nexus: "R$ 15k",
-    savings: "R$ 413k", savingsValue: 413,
+    implant: "R$ 120k", monthly: "R$ 12k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 426k", savingsValue: 426,
   },
   {
     n: "02", moduleN: "02", module: "Pessoas",
