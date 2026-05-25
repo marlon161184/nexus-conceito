@@ -165,8 +165,8 @@ export const products: Product[] = [
     rationale: "Governança que vive em arquivos espalhados por e-mail e Drive não é governança — é arqueologia. O HUB cria o endereço permanente das regras que regem o grupo.",
     tension: "A empresa que cresce sem memória institucional — onde cada novo colaborador reinventa a roda porque o conhecimento não tem endereço fixo.",
     market: "Confluence · Microsoft SharePoint · Notion Enterprise",
-    implant: "R$ 60k", monthly: "R$ 4k/mês", nexus: "R$ 10k",
-    savings: "R$ 170k", savingsValue: 170,
+    implant: "R$ 60k", monthly: "R$ 4k/mês", nexus: "R$ 0,9k",
+    savings: "R$ 179k", savingsValue: 179,
   },
 ];
 
