@@ -1442,8 +1442,11 @@ function Slide14() {
             >
               {totalSavings}
             </div>
-            <div className="mt-3 font-mono text-[9px] text-[var(--silver)]">
-              Vs. aquisição de plataformas equivalentes
+            <div className="mt-2 font-mono text-[9px] text-[var(--silver)]">
+              Custo real Nexus: <span style={{ color: "var(--green)" }}>{totalNexus}</span>
+            </div>
+            <div className="mt-1 font-mono text-[9px] text-[var(--silver-dark)]">
+              Vs. R$ 3,4M em plataformas de mercado equivalentes
             </div>
           </div>
         </div>
