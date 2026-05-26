@@ -1511,7 +1511,7 @@ function Slide14() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
                 CUSTO REAL DO NEXUS
@@ -1543,26 +1543,6 @@ function Slide14() {
                   Não são cotações formais.<br />
                   Representam faixa de referência<br />
                   para análise de ordem de grandeza.
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <div className="font-mono uppercase text-[10px] text-[var(--silver-dark)] tracking-[0.15em] mb-2">
-                GRAU DE CONFIANÇA POR PRODUTO
-              </div>
-              <div className="font-mono text-[10px] leading-[1.7]">
-                <span style={{ color: "var(--green)" }}>↑ Mais defensáveis:</span><br />
-                <span className="text-[var(--silver)]">
-                  PAR 2026 (SAP SF tem tabela pública)<br />
-                  Plataforma de Marca (agência real)<br />
-                  Academia de Líderes (LMS corporativo)
-                </span><br /><br />
-                <span style={{ color: "#C0A060" }}>↓ Faixas mais amplas:</span><br />
-                <span className="text-[var(--silver)]">
-                  HYNstaNewe (se M365 já contratado)<br />
-                  HUB Hyndra (Confluence = baixo custo)<br />
-                  Habitar a Estrutura (ChartHop acessível)
                 </span>
               </div>
             </div>
