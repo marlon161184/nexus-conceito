@@ -993,6 +993,7 @@ function Slide01() {
   ];
   return (
     <div className="relative w-full h-full bg-[var(--black)] overflow-hidden">
+      <HeroCenterLightParallax />
       <LogoAnatomyParallax />
 
       <div className="slide-content active relative h-full px-[80px] flex flex-col justify-center max-w-[1100px] z-10">
