@@ -1371,33 +1371,8 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
 
 
 
-            <>
-              <img
-                src={p.image}
-                alt=""
-                data-modulo={p.moduleSlug}
-                onError={(e) => {
-                  const el = e.currentTarget;
-                  const fb = FALLBACK_IMAGES[p.moduleSlug];
-                  if (fb && el.src !== fb) el.src = fb;
-                }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0 z-[1] pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to right, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.12) 20%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-0 z-[1] pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(10,10,10,0.12) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.2) 100%)",
-                }}
-              />
-            </>
+            <ProductPhotoParallax p={p} />
+
           )}
           <div
             className="absolute z-[2] font-serif italic"
