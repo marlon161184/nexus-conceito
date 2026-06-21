@@ -789,6 +789,57 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="eyebrow">{children}</div>;
 }
 
+/* ==================== HERO — luz central sobre o blueprint ==================== */
+function HeroCenterLightParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Halo principal — verde Newe, centralizado */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(22)}>
+        <div
+          style={{
+            width: "70vw",
+            height: "70vw",
+            maxWidth: 1200,
+            maxHeight: 1200,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(157,202,121,0.28) 0%, rgba(157,202,121,0.14) 22%, rgba(157,202,121,0.05) 45%, rgba(10,10,10,0) 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+      </div>
+      {/* Núcleo quente — luz mais densa no centro */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(38)}>
+        <div
+          style={{
+            width: "30vw",
+            height: "30vw",
+            maxWidth: 520,
+            maxHeight: 520,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(247,246,244,0.18) 0%, rgba(200,240,154,0.1) 35%, rgba(10,10,10,0) 70%)",
+            filter: "blur(28px)",
+            mixBlendMode: "screen",
+          }}
+        />
+      </div>
+      {/* Halo sutil contracorrente — profundidade */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(-14)}>
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            background:
+              "radial-gradient(ellipse at 50% 50%, rgba(157,202,121,0.06) 0%, rgba(10,10,10,0) 55%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
 function LogoAnatomyParallax({
   variant = "full",
