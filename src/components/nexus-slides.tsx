@@ -1319,7 +1319,7 @@ function ProductPhotoParallax({ p }: { p: Product }) {
   );
 }
 
-
+function ProductSlide({ p, idx }: { p: Product; idx: number }) {
   const pct = (p.savingsValue / MAX_SAVING) * 100;
   return (
     <div className="relative w-full h-full bg-[var(--black)] flex flex-col overflow-hidden">
