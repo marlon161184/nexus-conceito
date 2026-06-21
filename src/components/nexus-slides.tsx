@@ -789,6 +789,57 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="eyebrow">{children}</div>;
 }
 
+/* ==================== HERO — luz central sobre o blueprint ==================== */
+function HeroCenterLightParallax() {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Halo principal — verde Newe, centralizado */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(22)}>
+        <div
+          style={{
+            width: "70vw",
+            height: "70vw",
+            maxWidth: 1200,
+            maxHeight: 1200,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(157,202,121,0.28) 0%, rgba(157,202,121,0.14) 22%, rgba(157,202,121,0.05) 45%, rgba(10,10,10,0) 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+      </div>
+      {/* Núcleo quente — luz mais densa no centro */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(38)}>
+        <div
+          style={{
+            width: "30vw",
+            height: "30vw",
+            maxWidth: 520,
+            maxHeight: 520,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(247,246,244,0.18) 0%, rgba(200,240,154,0.1) 35%, rgba(10,10,10,0) 70%)",
+            filter: "blur(28px)",
+            mixBlendMode: "screen",
+          }}
+        />
+      </div>
+      {/* Halo sutil contracorrente — profundidade */}
+      <div className="absolute inset-0 flex items-center justify-center" style={layer(-14)}>
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            background:
+              "radial-gradient(ellipse at 50% 50%, rgba(157,202,121,0.06) 0%, rgba(10,10,10,0) 55%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ==================== SLIDE 01 — CAPA (com parallax anatomia) ==================== */
 function LogoAnatomyParallax({
   variant = "full",
@@ -942,6 +993,7 @@ function Slide01() {
   ];
   return (
     <div className="relative w-full h-full bg-[var(--black)] overflow-hidden">
+      <HeroCenterLightParallax />
       <LogoAnatomyParallax />
 
       <div className="slide-content active relative h-full px-[80px] flex flex-col justify-center max-w-[1100px] z-10">
@@ -1214,6 +1266,59 @@ function Slide03() {
 /* ==================== SLIDES 04-13 — PRODUTOS ==================== */
 const MAX_SAVING = Math.max(...products.map((p) => p.savingsValue));
 
+/* ==================== Foto do produto com parallax (fallback) ==================== */
+function ProductPhotoParallax({ p }: { p: Product }) {
+  const { ref, layer } = useParallax();
+  return (
+    <div ref={ref} className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+      <div className="absolute" style={{ ...layer(14), inset: "-30px" }}>
+        <img
+          src={p.image}
+          alt=""
+          data-modulo={p.moduleSlug}
+          onError={(e) => {
+            const el = e.currentTarget;
+            const fb = FALLBACK_IMAGES[p.moduleSlug];
+            if (fb && el.src !== fb) el.src = fb;
+          }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "grayscale(20%) brightness(0.85) contrast(1.08)" }}
+        />
+      </div>
+      {/* Brilho parallax — luz que se desloca sobre a foto */}
+      <div className="absolute inset-0 pointer-events-none" style={layer(28)}>
+        <div
+          className="absolute"
+          style={{
+            top: "20%",
+            left: "30%",
+            width: "60%",
+            height: "60%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(247,246,244,0.18) 0%, rgba(157,202,121,0.08) 35%, rgba(10,10,10,0) 70%)",
+            filter: "blur(30px)",
+            mixBlendMode: "screen",
+          }}
+        />
+      </div>
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.12) 20%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(10,10,10,0.12) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.2) 100%)",
+        }}
+      />
+    </div>
+  );
+}
+
 function ProductSlide({ p, idx }: { p: Product; idx: number }) {
   const pct = (p.savingsValue / MAX_SAVING) * 100;
   return (
@@ -1319,33 +1424,8 @@ function ProductSlide({ p, idx }: { p: Product; idx: number }) {
 
 
 
-            <>
-              <img
-                src={p.image}
-                alt=""
-                data-modulo={p.moduleSlug}
-                onError={(e) => {
-                  const el = e.currentTarget;
-                  const fb = FALLBACK_IMAGES[p.moduleSlug];
-                  if (fb && el.src !== fb) el.src = fb;
-                }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0 z-[1] pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to right, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.12) 20%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute inset-0 z-[1] pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(10,10,10,0.12) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.2) 100%)",
-                }}
-              />
-            </>
+            <ProductPhotoParallax p={p} />
+
           )}
           <div
             className="absolute z-[2] font-serif italic"
